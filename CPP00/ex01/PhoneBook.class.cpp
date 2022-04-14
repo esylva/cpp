@@ -1,17 +1,27 @@
-#include "PhoneBook.class.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Phonebook.class.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/10 09:29:49 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/10 09:29:49 by esylva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */#include "PhoneBook.class.hpp"
 
-	PhoneBook::PhoneBook(void)
-	{
-		std::cout << "Wellcome to PhoneBook!" << std::endl;
-		this->currentIndex = -1;
-		this->num_contacts = 0;
+PhoneBook::PhoneBook(void)
+{
+	std::cout << "Wellcome to PhoneBook!" << std::endl;
+	this->currentIndex = -1;
+	this->num_contacts = 0;
 
-	}
-	
-	PhoneBook::~PhoneBook(void)
-	{
-		std::cout << "PhoneBook says: \"Good Bye!\"" <<std::endl;
-	}
+}
+
+PhoneBook::~PhoneBook(void)
+{
+	std::cout << "PhoneBook says: \"Good Bye!\"" <<std::endl;
+}
 
 
 void	PhoneBook::add(void)
