@@ -13,12 +13,6 @@
 #include "Account.hpp"
 
 
-// int		main() {
-// 	Account		example(1);
-
-// 	example.displayAccountsInfos();
-// }
-
 int		main( void ) {
 
 	typedef std::vector<Account::t>							  accounts_t;

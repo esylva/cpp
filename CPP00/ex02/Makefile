@@ -5,7 +5,7 @@ SRCS := tests.cpp Account.cpp
 OBJS := ${patsubst %.cpp,%.o,${SRCS}}
 D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
 
-GCC := clang++
+GCC := c++
 FLAGS := -Wall -Wextra -Werror
 
 all: ${NAME}
