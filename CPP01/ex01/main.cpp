@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:58:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/15 15:18:16 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/15 18:38:21 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 int	main(void)
 {
-	Zombie	*zombie;
+	Zombie	*zombies;
 	int		N;
 	std::string	name;
 
 	N = 5;
 	name = "Sidor";
 	std::cout << std::endl;
-	zombie = zombieHorde(N, name);
+	zombies = zombieHorde(N, name);
 	std::cout << std::endl;
-	delete []zombie;
+	delete []zombies;
 
-	// randomChump("Heeeeeeap Zombie");
 	return (0);
 }
 

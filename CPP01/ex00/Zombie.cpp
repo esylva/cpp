@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:51:11 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/15 08:59:07 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/15 18:37:23 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	Zombie::set_name(std::string name)
 
 void	Zombie::announce(void)
 {
-	std::cout << get_name() << " BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << get_name() << " says:" << " \"BraiiiiiiinnnzzzZ...\"" << std::endl;
 }

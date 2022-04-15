@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 15:07:25 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/14 15:08:13 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/15 18:34:01 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie	*newZombie(std::string name)
+Zombie* zombieHorde(int N, std::string name)
 {
-	Zombie *new_zombie;
+	Zombie	*z;
 
-	new_zombie = new Zombie(name);
-	return(new_zombie);
+	if (N < 1)
+	{
+		std::cout << "Wrond quantity" << std::endl;
+		return (0);
+	}
+	z = new Zombie[N];
+	for (int i = 0; i < N; i++)
+	{
+		z[i].set_name(name);
+		z[i].set_name(z[i].get_name().append(" from the Horde"));
+		z[i].announce();
+	}
+	return (&z[0]);
 }

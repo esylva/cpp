@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+         #
+#    By: esylva <esylva@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 23:11:22 by esylva            #+#    #+#              #
-#    Updated: 2022/04/15 09:01:53 by esylva           ###   ########.fr        #
+#    Updated: 2022/04/15 18:23:48 by esylva           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := zombie
+NAME = zombie
  
-SRCS := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-OBJS := ${patsubst %.cpp,%.o,${SRCS}}
-D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
+SRCS = main.cpp Zombie.cpp ZombieHorde.cpp
+OBJS = ${patsubst %.cpp,%.o,${SRCS}}
+D_FILES = ${patsubst %.cpp,%.d,${SRCS}}
 
-GCC := c++
+GCC = c++
 
-FLAGS := -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: ${NAME}
 
