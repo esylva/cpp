@@ -6,24 +6,27 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:58:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/15 20:35:07 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/15 21:06:34 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include <iostream>
 
 int	main(void)
 {
-	Zombie	*zombies;
-	int		N;
-	std::string	name;
+	std::string	brain = "HI THIS IS BRAIN";
+	std::string	*stringPTR = &brain;
+	std::string	&stringREF = brain;
 
-	N = 5;
-	name = "Sidor";
+	std::cout << "Address of the variable:    " << &brain << std::endl;
+	std::cout << "Address of the stringPTR:   " << stringPTR << std::endl;
+	std::cout << "Address of the stringREF:   " << &stringREF << std::endl;
 	std::cout << std::endl;
-	zombies = zombieHorde(N, name);
+	std::cout << "Value of the variable:   " << brain << std::endl;
+	std::cout << "Value of the stringPTR:  " << *stringPTR << std::endl;
+	std::cout << "Value of the stringREF:  " << stringREF << std::endl;
 	std::cout << std::endl;
-	delete []zombies;
 
 	return (0);
 }

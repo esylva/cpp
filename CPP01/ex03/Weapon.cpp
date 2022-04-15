@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 13:58:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/15 20:35:07 by esylva           ###   ########.fr       */
+/*   Created: 2022/04/14 13:51:11 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/15 21:34:39 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int	main(void)
+Weapon::Weapon(void){}
+
+Weapon::Weapon(std::string _type): _type(_type){}
+
+Weapon::~Weapon(void)
 {
-	Zombie	*zombies;
-	int		N;
-	std::string	name;
+	std::cout << this->getType() << " had brocken" << std::endl;
+}
 
-	N = 5;
-	name = "Sidor";
-	std::cout << std::endl;
-	zombies = zombieHorde(N, name);
-	std::cout << std::endl;
-	delete []zombies;
+std::string		Weapon::getType(void) const
+{
+	return(this->_type);
+}
 
-	return (0);
+void	Weapon::setType(std::string type)
+{
+	_type = type;
 }

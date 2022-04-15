@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 13:58:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/15 20:35:07 by esylva           ###   ########.fr       */
+/*   Created: 2022/04/14 15:07:25 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/15 21:47:26 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
+# include "Weapon.hpp"
 
-int	main(void)
+class HumanB
 {
-	Zombie	*zombies;
-	int		N;
-	std::string	name;
+	private:
+		std::string	_name;
+		Weapon		type;
+		
+	public:
+		HumanB();
+		HumanB(std::string name);
+		~HumanB();
 
-	N = 5;
-	name = "Sidor";
-	std::cout << std::endl;
-	zombies = zombieHorde(N, name);
-	std::cout << std::endl;
-	delete []zombies;
+		std::string getName(void) const;
+		void		setName(std::string name);
+		void		takeWeapon(void);
+};
 
-	return (0);
-}
+#endif

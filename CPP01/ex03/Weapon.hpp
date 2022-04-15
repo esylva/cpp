@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 13:58:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/15 20:35:07 by esylva           ###   ########.fr       */
+/*   Created: 2022/04/14 13:47:08 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/15 21:26:37 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+# include <iostream>
+# include <string>
 
-int	main(void)
+class Weapon
 {
-	Zombie	*zombies;
-	int		N;
-	std::string	name;
+	private:
+		std::string	_type;
+		
+	public:
+		Weapon();
+		Weapon(std::string type);
+		~Weapon();
 
-	N = 5;
-	name = "Sidor";
-	std::cout << std::endl;
-	zombies = zombieHorde(N, name);
-	std::cout << std::endl;
-	delete []zombies;
+		std::string getType(void) const;
+		void		setType(std::string type);
+};
 
-	return (0);
-}
+#endif
