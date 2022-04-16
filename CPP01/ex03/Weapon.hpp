@@ -19,6 +19,7 @@ class Weapon
 {
 	private:
 		std::string	_type;
+		std::string	_name;
 		
 	public:
 		Weapon();
