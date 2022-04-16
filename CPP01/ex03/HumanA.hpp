@@ -18,20 +18,18 @@ class HumanA
 {
 	private:
 		std::string	_name;
-		Weapon		type;
+		Weapon&		_weapon;
 		
 	public:
 		HumanA();
-		HumanA(std::string name);
-		HumanA(int N, std::string name);
+		HumanA(std::string name, Weapon& weapon);
 		~HumanA();
 
 		std::string get_name(void) const;
 		void		set_name(std::string name);
-		void		announce(void);
+		Weapon		get_weapon(void) const;
+		void		attack(void);
 };
-	HumanA*	newHumanA(std::string name);
-	void	randomChump(std::string name);
-	HumanA* HumanAHorde(int N, std::string name);
+
 
 #endif
