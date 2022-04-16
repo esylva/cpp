@@ -12,21 +12,30 @@
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(void){}
 
-HumanA::HumanA(Weapon type): _type(_type){}
+HumanA::HumanA(std::string &name, Weapon &weapon): _name(name) _type(weapon){}
 
 HumanA::~HumanA(void)
 {
-	std::cout << this->getType() << " goes home" << std::endl;
+	std::cout << getName() << " goes home" << std::endl;
 }
 
-std::string		HumanA::getType(void) const
+std::string		&HumanA::getName(void) const
 {
-	return(this->_type);
+	return(this->_name);
 }
 
-void	HumanA::setType(std::string type)
+void	HumanA::setName(std::string &name)
 {
-	_type = type;
+	_name = name;
+}
+
+Weapon	&HumanA::getWeapon( void ) const
+{
+	return (_weapon);
+}
+
+void	HumanA::attack( void )
+{
+	std::cout << _name << " attacks with his " << _weapon.getType() << std::endl;
 }

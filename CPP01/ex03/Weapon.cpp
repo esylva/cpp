@@ -12,23 +12,21 @@
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(void){}
+Weapon::Weapon(){}
 
-Weapon::Weapon(std::string name): _name(name) {}
-
-Weapon::Weapon(std::string name, weapon): _name(name), _type(weapon){}
+Weapon::Weapon(std::string &weapon): _type(weapon){}
 
 Weapon::~Weapon(void)
 {
 	std::cout << this->geWeapon() << " brocken" << std::endl;
 }
 
-std::string		Weapon::getWeapon(void) const
+std::string		&Weapon::getWeapon(void) const
 {
-	return(this->_type);
+	return(_type);
 }
 
-void	Weapon::setWeapon(std::string weapon)
+void	Weapon::setWeapon(std::string &weapon)
 {
 	_type = weapon;
 }

@@ -16,7 +16,17 @@
 
 int	main(void)
 {
-
-
+	Weapon gun1("gun");
+	HumanA anna("Anna", gun);
+	anna.attack();
+	gun.setType("shotgun");
+	anna.attack();
+	Weapon gun2("knife");
+	HumanB Bob("Bob");
+	bob.attack();
+	bob.setWeapon(gun1);
+	bob.attack();
+	bob.setWeapon(gun2);
+	bob.attack()
 	return (0);
 }
