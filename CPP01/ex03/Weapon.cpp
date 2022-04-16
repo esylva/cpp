@@ -14,19 +14,21 @@
 
 Weapon::Weapon(void){}
 
-Weapon::Weapon(std::string _type): _type(_type){}
+Weapon::Weapon(std::string name): _name(name) {}
+
+Weapon::Weapon(std::string name, weapon): _name(name), _type(weapon){}
 
 Weapon::~Weapon(void)
 {
-	std::cout << this->getType() << " had brocken" << std::endl;
+	std::cout << this->geWeapon() << " brocken" << std::endl;
 }
 
-std::string		Weapon::getType(void) const
+std::string		Weapon::getWeapon(void) const
 {
 	return(this->_type);
 }
 
-void	Weapon::setType(std::string type)
+void	Weapon::setWeapon(std::string weapon)
 {
-	_type = type;
+	_type = weapon;
 }
