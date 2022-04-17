@@ -12,37 +12,46 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string &name): _name(name){}
+HumanB::HumanB(const std::string &name): _name(name), _weapon(NULL)
+{
+	std::cout << "Hi! My name is " << getName() << ". I haven't weapon." << std::endl;
+}
+
+HumanB::HumanB(const std::string &name, const Weapon &weapon):
+	_name(name), _weapon(&weapon)
+{
+	std::cout << "Hi! My name is " << getName() << ". I have a " << _weapon->getType() << std::endl;
+}
 
 HumanB::~HumanB(void)
 {
 	std::cout << getName() << " goes home" << std::endl;
 }
 
-std::string		&HumanB::getName(void) const
+const std::string		&HumanB::getName(void) const
 {
 	return(_name);
 }
 
-void	HumanB::setName(std::string name)
+void	HumanB::setName(const std::string &name)
 {
 	_name = name;
 }
 
-Weapon	*HumanB::getWeapon(void) const
+const Weapon	*HumanB::getWeapon(void) const
 {
-	return (_type);
+	return (_weapon);
 }
 
-void	HumanB::setWeapon(Weapon &weapon )
+void	HumanB::setWeapon(const Weapon &weapon)
 {
-	_type = weapon;
+	_weapon = &weapon;
 }
 
 void	HumanB::attack( void ) const
 {
-    if (_type->getType())
+    if (_weapon)
 		std::cout << _name << " attacks with his " << _weapon->getType() << std::endl;
 	else
-		std::cout << _name << "hasn't weapon." << std::endl;
+		std::cout << _name << " hasn't weapon." << std::endl;
 }

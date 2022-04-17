@@ -12,30 +12,32 @@
 
 #include "HumanA.hpp"
 
-
-HumanA::HumanA(std::string &name, Weapon &weapon): _name(name) _type(weapon){}
+HumanA::HumanA(const std::string &name, Weapon &weapon): _name(name), _weapon(weapon)
+{
+	std::cout << "Hi! My name is " << getName() << ". I have a " << _weapon.getType() << std::endl;
+}
 
 HumanA::~HumanA(void)
 {
 	std::cout << getName() << " goes home" << std::endl;
 }
 
-std::string		&HumanA::getName(void) const
+const std::string		&HumanA::getName(void) const
 {
-	return(this->_name);
+	return(_name);
 }
 
-void	HumanA::setName(std::string &name)
+void	HumanA::setName(const std::string &name)
 {
 	_name = name;
 }
 
-Weapon	&HumanA::getWeapon( void ) const
+Weapon	&HumanA::getWeapon(void) const
 {
 	return (_weapon);
 }
 
-void	HumanA::attack( void )
+void	HumanA::attack(void) const
 {
 	std::cout << _name << " attacks with his " << _weapon.getType() << std::endl;
 }

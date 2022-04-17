@@ -16,17 +16,22 @@
 
 int	main(void)
 {
-	Weapon gun1("gun");
-	HumanA anna("Anna", gun);
-	anna.attack();
-	gun.setType("shotgun");
-	anna.attack();
-	Weapon gun2("knife");
-	HumanB Bob("Bob");
+	std::cout << std::endl;
+	Weapon gun1 = Weapon("gun");
+	HumanA alex("Alex", gun1);
+	alex.attack();
+	gun1.setType("shotgun");
+	alex.attack();
+	std::cout << std::endl;
+	Weapon gun2 = Weapon("knife");
+	HumanB bob("Bob");
 	bob.attack();
 	bob.setWeapon(gun1);
 	bob.attack();
 	bob.setWeapon(gun2);
-	bob.attack()
+	bob.attack();
+	std::cout << std::endl;
+	HumanB lea("Lea", gun1);
+	lea.attack();
 	return (0);
 }

@@ -14,19 +14,19 @@
 
 Weapon::Weapon(){}
 
-Weapon::Weapon(std::string &weapon): _type(weapon){}
+Weapon::Weapon(const std::string &weapon): _type(weapon){}
 
 Weapon::~Weapon(void)
 {
-	std::cout << this->geWeapon() << " brocken" << std::endl;
+	std::cout << " and his " << getType() << " brocken" << std::endl;
 }
 
-std::string		&Weapon::getWeapon(void) const
+const std::string		&Weapon::getType(void) const
 {
 	return(_type);
 }
 
-void	Weapon::setWeapon(std::string &weapon)
+void	Weapon::setType(const std::string &weapon)
 {
 	_type = weapon;
 }

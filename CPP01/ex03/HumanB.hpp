@@ -18,18 +18,19 @@ class HumanB
 {
 	private:
 		std::string	_name;
-		Weapon		*type;
+		const Weapon		*_weapon;
 		
 	public:
-		HumanB();
-		HumanB(std::string &name);
+		HumanB(const std::string &name);
+		HumanB(const std::string &name, const Weapon &weapon);
+
 		~HumanB();
 
-		std::string getName(void) const;
-		void		setName(std::string &name);
-		Weapon		*getWeapon(void) const;
-		void		setWeapon(Weapon &weapon);
-		void		attack(void);
+		const std::string &getName(void) const;
+		const Weapon		*getWeapon(void) const;
+		void		setName(const std::string &name);
+		void		setWeapon(const Weapon &weapon);
+		void		attack(void) const;
 };
 
 #endif
