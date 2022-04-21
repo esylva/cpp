@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 06:32:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/21 06:32:45 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/21 10:58:12 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,38 @@
 	void Harl::warning(void){
 		std::cout << "[ WARNING ]" << std::endl;
 		std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for " <<
-			"years whereas you started working here since last month." <<std::endl;
+			"years whereas you started working here since last month." << std::endl;
 	}
 
 	void Harl::error(void){
 		std::cout << "[ ERROR ]" << std::endl;
-		std::cout << "This is unacceptable! I want to speak to the manager now." << endl;
+		std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 	}
 
 
-	void complain( std::string level ){
+	void Harl::complain( std::string level ){
+
+		void (Harl::*ft_ptr[4])(void) =
+		{
+			&Harl::debug,
+			&Harl::info,
+			&Harl::warning,
+			&Harl::error
+		};
+		
+		std::string	levels[4] =
+		{
+			"DEBUG",
+			"INFO",
+			"WARNING",
+			"ERROR",
+		};
+
+		
+		int i = 0;
+		while( (levels[i] != level)){
+		i++;
+		}
+		(this->*ft_ptr[i])();
 
 	}
-
-
-#endif
-
