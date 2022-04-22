@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+         #
+#    By: esylva <esylva@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 23:11:22 by esylva            #+#    #+#              #
-#    Updated: 2022/04/22 12:38:42 by esylva           ###   ########.fr        #
+#    Updated: 2022/04/22 20:11:54 by esylva           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
 
 GCC := c++
 
-FLAGS := -Wall -Wextra -Werror -std=c++98
+FLAGS := -Wall -Wextra -Werror -std=c++98 -g
 
 all: ${NAME}
 
