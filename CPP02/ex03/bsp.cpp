@@ -1,10 +1,25 @@
 #include "Point.hpp"
 
-bool bsp( Point const a, Point const b, Point const c, Point const point);
+// bool bsp( Point const a, Point const b, Point const c, Point const point);
 
-// • a, b, c: The vertices of our beloved triangle.
-// • point: The point to check.
-// • Returns: True if the point is inside the triangle. False otherwise.
 
-// Thus, if the point is a vertex or on edge, it will return False.
-// Implement and turn in your own tests to ensure that your class behaves as expected.
+static Fixed	sign(Point p1, Point p2, Point	p3) {
+	Fixed	res((p1.getX().toInt() - p3.getX().toInt()) * (p2.getY().toInt() - p3.getY().toInt()) - (p1.getY().toInt() - p3.getY().toInt()) * (p2.getX().toInt() - p3.getX().toInt()));
+	return res;
+}
+
+bool	bsp(Point A, Point B, Point C, Point const point) {
+	Fixed	d1, d2, d3;
+	bool	negative, positive;
+
+	d1 = sign(point, A, B);
+	d2 = sign(point, B, C);
+	d3 = sign(point, C, A);
+
+    std::cout << d1 << " " << d2 << " " << d3 << std::endl;
+	negative = (d1 < 0 && d2 < 0 && d3 < 0);
+	positive = (d1 > 0 && d2 > 0 && d3 > 0);
+	if (negative || positive)
+	    return true;
+	return false;
+}

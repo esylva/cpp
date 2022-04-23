@@ -5,6 +5,10 @@
 
 class Fixed {
 
+	private:
+		int					_fixedPointNumber;
+		static const int	_numberOfBits = 8;
+
 	public:
 
 		Fixed(void);
@@ -19,34 +23,41 @@ class Fixed {
 		void setRawBits( int const raw );
 		float toFloat( void ) const;
 		int toInt( void ) const;
-		static Fixed& min(Fixed& first, Fixed& second);
+
+		const static Fixed& min(Fixed& first, Fixed& second);
 		const static Fixed& min(const Fixed& first, const Fixed& second);
-		static Fixed& max(Fixed& first, Fixed& second);
+		const static Fixed& max(Fixed& first, Fixed& second);
 		const static Fixed& max(const Fixed& first, const Fixed& second);
 		
-	private:
-		int					_fixedPointNumber;
-		static const int	_numberOfBits = 8;
 
+		
+	bool operator>(const Fixed &val) const;
+	bool operator<(const Fixed &val) const;
+	bool operator<=(const Fixed &val) const;
+	bool operator>=(const Fixed &val) const;
+	bool operator==(const Fixed &val) const;
+	bool operator!=(const Fixed &val) const;
+	
+	Fixed operator+(const Fixed &val) const;
+	Fixed operator-(const Fixed &val) const;
+	Fixed operator*(const Fixed &val) const;
+	Fixed operator/(const Fixed &val) const;
+
+
+	// Fixed & operator+=(const Fixed &val) const;
+	// Fixed & operator-=(const Fixed &val) const;
+	// Fixed & operator*=(const Fixed &val) const;
+	// Fixed & operator/=(const Fixed &val) const;
+
+//prefix operators
+	Fixed & operator++();
+	Fixed & operator--();
+
+// postfix operators
+	Fixed operator++(int);
+	Fixed operator--(int);
 
 };
-
 	std::ostream & operator<<(std::ostream &stream, const Fixed &val);
-
-	bool & operator>(std::ostream &stream, const Fixed &val);
-	bool & operator<(std::ostream &stream, const Fixed &val);
-	bool & operator<=(std::ostream &stream, const Fixed &val);
-	bool & operator>=(std::ostream &stream, const Fixed &val);
-	bool & operator==(std::ostream &stream, const Fixed &val);
-	bool & operator!=(std::ostream &stream, const Fixed &val);
-	std::ostream & operator+(std::ostream &stream, const Fixed &val);
-	std::ostream & operator-(std::ostream &stream, const Fixed &val);
-	std::ostream & operator*(std::ostream &stream, const Fixed &val);
-	std::ostream & operator/(std::ostream &stream, const Fixed &val);
-
-	// std::ostream & operator++(std::ostream &stream, const Fixed &val);
-	// std::ostream & operator--(std::ostream &stream, const Fixed &val);
-	// std::ostream & ++operator(std::ostream &stream, const Fixed &val);
-	// std::ostream & --operator(std::ostream &stream, const Fixed &val);
-
+	
 #endif

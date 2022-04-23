@@ -6,13 +6,13 @@
 #    By: esylva <esylva@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 23:11:22 by esylva            #+#    #+#              #
-#    Updated: 2022/04/22 21:04:04 by esylva           ###   ########.fr        #
+#    Updated: 2022/04/23 19:32:21 by esylva           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := fixed
  
-SRCS := main.cpp Fixed.cpp Point.cpp
+SRCS := main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 OBJS := ${patsubst %.cpp,%.o,${SRCS}}
 D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
