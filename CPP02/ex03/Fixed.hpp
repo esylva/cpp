@@ -28,16 +28,17 @@ class Fixed {
 		int					_fixedPointNumber;
 		static const int	_numberOfBits = 8;
 
+
 };
 
 	std::ostream & operator<<(std::ostream &stream, const Fixed &val);
 
-	std::ostream & operator>(std::ostream &stream, const Fixed &val);
-	std::ostream & operator<(std::ostream &stream, const Fixed &val);
-	std::ostream & operator<=(std::ostream &stream, const Fixed &val);
-	std::ostream & operator>=(std::ostream &stream, const Fixed &val);
-	std::ostream & operator==(std::ostream &stream, const Fixed &val);
-	std::ostream & operator!=(std::ostream &stream, const Fixed &val);
+	bool & operator>(std::ostream &stream, const Fixed &val);
+	bool & operator<(std::ostream &stream, const Fixed &val);
+	bool & operator<=(std::ostream &stream, const Fixed &val);
+	bool & operator>=(std::ostream &stream, const Fixed &val);
+	bool & operator==(std::ostream &stream, const Fixed &val);
+	bool & operator!=(std::ostream &stream, const Fixed &val);
 	std::ostream & operator+(std::ostream &stream, const Fixed &val);
 	std::ostream & operator-(std::ostream &stream, const Fixed &val);
 	std::ostream & operator*(std::ostream &stream, const Fixed &val);
