@@ -23,6 +23,7 @@ class Fixed {
 		void setRawBits( int const raw );
 		float toFloat( void ) const;
 		int toInt( void ) const;
+
 		const static Fixed& min(Fixed& first, Fixed& second);
 		const static Fixed& min(const Fixed& first, const Fixed& second);
 		const static Fixed& max(Fixed& first, Fixed& second);
@@ -41,29 +42,22 @@ class Fixed {
 	Fixed operator-(const Fixed &val) const;
 	Fixed operator*(const Fixed &val) const;
 	Fixed operator/(const Fixed &val) const;
-	// Fixed & operator+(const Fixed &val1, const Fixed &val2) const;
-	// Fixed & operator-(const Fixed &val1, const Fixed &val2) const;
-	// Fixed & operator*(const Fixed &val1, const Fixed &val2) const;
-	// Fixed & operator/(const Fixed &val1, const Fixed &val2) const;
 
-	Fixed & operator+=(const Fixed &val) const;
-	Fixed & operator-=(const Fixed &val) const;
-	Fixed & operator*=(const Fixed &val) const;
-	Fixed & operator/=(const Fixed &val) const;
+
+	// Fixed & operator+=(const Fixed &val) const;
+	// Fixed & operator-=(const Fixed &val) const;
+	// Fixed & operator*=(const Fixed &val) const;
+	// Fixed & operator/=(const Fixed &val) const;
 
 //prefix operators
 	Fixed & operator++();
 	Fixed & operator--();
 
 // postfix operators
-	Fixed operator++(int one);
-	Fixed operator--(int one);
+	Fixed operator++(int);
+	Fixed operator--(int);
 
 };
 	std::ostream & operator<<(std::ostream &stream, const Fixed &val);
-
-
-
-
 	
 #endif

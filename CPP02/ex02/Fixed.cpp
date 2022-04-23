@@ -63,35 +63,27 @@ bool Fixed::operator!=(const Fixed &val) const {
 }
 	
 Fixed Fixed::operator+(const Fixed &val) const {
-		Fixed result(this->_fixedPointNumber + val._fixedPointNumber);
-		// Fixed result(this->toFloat() + val.toFloat());
-		// result.setRawBits(this->_fixedPointNumber + val._fixedPointNumber);
-		return result;
+	Fixed result(this->toFloat() + val.toFloat());
+	return result;
 }
 
 Fixed Fixed::operator-(const Fixed &val) const {
-		Fixed result(this->_fixedPointNumber - val._fixedPointNumber);
-		// Fixed result(this->toFloat() - val.toFloat());
-		result.setRawBits(this->_fixedPointNumber - val._fixedPointNumber);
-		return result;
+	Fixed result(this->toFloat() - val.toFloat());
+	return result;
 }
 
 Fixed Fixed::operator*(const Fixed &val) const {
-		Fixed result;
-		result.setRawBits(this->toFloat() * val.toFloat());
-		return result;
+	Fixed result;
+	result.setRawBits(this->toFloat() * val._fixedPointNumber);
+	return result;
 }
 
 Fixed Fixed::operator/(const Fixed &val) const {
-		Fixed result;
-		result.setRawBits(this->toFloat() / val.toFloat());
-		return result;
+	Fixed result;
+	result.setRawBits(this->_fixedPointNumber / val.toFloat());
+	return result;
 }
 
-	// Fixed & operator+(const Fixed &val1, const Fixed &val2) const;
-	// Fixed & operator-(const Fixed &val1, const Fixed &val2) const;
-	// Fixed & operator*(const Fixed &val1, const Fixed &val2) const;
-	// Fixed & operator/(const Fixed &val1, const Fixed &val2) const;
 
 // 	Fixed & Fixed::operator+=(const Fixed &val) const;
 // 	Fixed & Fixed::operator-=(const Fixed &val) const;
@@ -99,12 +91,28 @@ Fixed Fixed::operator/(const Fixed &val) const {
 // 	Fixed & Fixed::operator/=(const Fixed &val) const;
 
 // //prefix operators
-// 	Fixed & Fixed::operator++();
-// 	Fixed & Fixed::operator--();
+Fixed & Fixed::operator++() {
+	this->_fixedPointNumber++;
+	return *this;
+}
+
+Fixed & Fixed::operator--() {
+	this->_fixedPointNumber--;
+	return *this;
+}
 
 // // postfix operators
-// 	Fixed Fixed::operator++(int one);
-// 	Fixed Fixed::operator--(int one);
+Fixed Fixed::operator++(int) {
+	Fixed	old = *this;
+	++(*this);
+	return old;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed	old = *this;
+	--(*this);
+	return old;
+}
 
 
 // internal functions
@@ -126,10 +134,33 @@ int Fixed::toInt( void ) const {
 	return this->getRawBits() >> _numberOfBits;
 }
 
-// const static Fixed& Fixed::min(Fixed& first, Fixed& second);
-// const static Fixed& Fixed::min(const Fixed& first, const Fixed& second);
-// const static Fixed& Fixed::max(Fixed& first, Fixed& second);
-// const static Fixed& Fixed::max(const Fixed& first, const Fixed& second);
+const Fixed& Fixed::min(Fixed& first, Fixed& second) {
+	if (first > second) {
+		return second;
+	}
+	return first;
+}
+
+const Fixed& Fixed::min(const Fixed& first, const Fixed& second) {
+	if (first > second) {
+		return second;
+	}
+	return first;
+}
+
+const Fixed& Fixed::max(Fixed& first, Fixed& second) {
+	if (first < second) {
+		return second;
+	}
+	return first;
+}
+
+const Fixed& Fixed::max(const Fixed& first, const Fixed& second){
+	if (first < second) {
+		return second;
+	}
+	return first;
+}
 
 
 
@@ -138,5 +169,3 @@ int Fixed::toInt( void ) const {
 std::ostream & operator<<(std::ostream &stream, const Fixed &val) {
 	return stream << val.toFloat();
 }
-
-
