@@ -1,10 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/24 00:04:16 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 00:04:16 by esylva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(const std::string &name): _name(name), _hp(10), _energy(10), _damage(0) {
 	std::cout << "ClapTrap " << _name << " greets you!" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &cpy): _name(cpy._name), _hp(cpy._hp), _energy(cpy._energy), _damage(cpy._damage) {}
+ClapTrap::ClapTrap(const ClapTrap &cpy): _name(cpy._name), _hp(cpy._hp), _energy(cpy._energy), _damage(cpy._damage) {
+		std::cout << "ClapTrap " << _name << " Cloning himself!" << std::endl;
+}
 
 ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap " << _name << " returns home." << std::endl;

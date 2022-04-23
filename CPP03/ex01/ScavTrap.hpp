@@ -3,32 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 16:21:48 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 16:31:29 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/23 23:58:35 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/23 23:58:35 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include <string>
-#include <iostream>
-
 #include "ClapTrap.hpp"
 
-namespace tlucanti
+class ScavTrap : public ClapTrap
 {
-	class ScavTrap : public ClapTrap
-	{
-	public:
-		ScavTrap(const std::string &name);
-		ScavTrap(const ScavTrap &cpy);
-		~ScavTrap();
+public:
+	ScavTrap(const std::string &name);
+	ScavTrap(const ScavTrap &cpy);
+	~ScavTrap();
 
-		void attack(const std::string &target) const;
-		void guardGate() const;
-	private:
-		ScavTrap();
-	};
-}
+	void attack(const std::string &target) const;
+	void guardGate() const;
+private:
+	ScavTrap();
+};
+

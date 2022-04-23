@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 16:21:48 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 16:37:21 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 00:04:28 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 00:04:28 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-tlucanti::ScavTrap::ScavTrap() {}
+ScavTrap::ScavTrap() {}
 
-tlucanti::ScavTrap::ScavTrap(const std::string &_name)
+ScavTrap::ScavTrap(const std::string &_name)
 	: ClapTrap(_name)
 {
 	hp = 100;
@@ -25,7 +25,7 @@ tlucanti::ScavTrap::ScavTrap(const std::string &_name)
 		damage << ">\n";
 }
 
-tlucanti::ScavTrap::ScavTrap(const ScavTrap &cpy)
+ScavTrap::ScavTrap(const ScavTrap &cpy)
 	: ClapTrap(cpy)
 {
 	hp = 100;
@@ -37,19 +37,19 @@ tlucanti::ScavTrap::ScavTrap(const ScavTrap &cpy)
 }
 
 void
-tlucanti::ScavTrap::attack(const std::string &target) const
+ScavTrap::attack(const std::string &target) const
 {
 	std::cout << "  ScavTrap <" << name << "> attack <" << target << ">, causing "
 		"<" << damage << "> points of damage!\n";
 }
 
 void
-tlucanti::ScavTrap::guardGate() const
+ScavTrap::guardGate() const
 {
 	std::cout << "  ScavTrap <" << name << "> have enterred in GateKeeper mode\n";
 }
 
-tlucanti::ScavTrap::~ScavTrap()
+ScavTrap::~ScavTrap()
 {
 	std::cout << "  ScavTrap <" << name << "> has been obliterated\n";
 }
