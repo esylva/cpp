@@ -38,3 +38,18 @@ void DiamondTrap::whoAmI() const
 //	std::cout << "    DiamondTrap <" << name << "> The Diamond Trap, rose by"
 //		"Frag <" << FragTrap::name << "> and Clap <" << ClapTrap::name << ">\n";
 }
+
+// DiamondTrap::DiamondTrap()
+// {
+//     this->name = "Default";
+//     ClapTrap::name = this->name + "_clap_name";
+//     this->Hit_points = FragTrap::Hit_points;
+//     this->Energy_points = ScavTrap::Energy_points;
+//     this->Attack_damage = FragTrap::Attack_damage;
+//     std::cout << "Constructor DiamondTrap " << this->name << " called" << std::endl;
+//     return ;
+// }
+// 18:31
+// вот так: this->Hit_points = FragTrap::Hit_points;
+
+// eSylva  18:31

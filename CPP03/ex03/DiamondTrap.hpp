@@ -18,6 +18,7 @@
 class DiamondTrap : public ScavTrap, public FragTrap
 {
 public:
+	DiamondTrap();
 	DiamondTrap(const std::string &_name);
 	explicit DiamondTrap(const DiamondTrap &cpy);
 	~DiamondTrap();
@@ -27,6 +28,5 @@ public:
 private:
 	std::string name;
 
-	DiamondTrap();
 };
 
