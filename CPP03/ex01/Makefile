@@ -12,7 +12,7 @@
 
 NAME := trap
  
-SRCS := main.cpp ClapTrap.cpp
+SRCS := main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS := ${patsubst %.cpp,%.o,${SRCS}}
 D_FILES := ${patsubst %.cpp,%.d,${SRCS}}

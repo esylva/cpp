@@ -12,6 +12,8 @@
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(){}
+
 ClapTrap::ClapTrap(const std::string &name): _name(name), _hp(10), _energy(10), _damage(0) {
 	std::cout << "ClapTrap " << _name << " greets you!" << std::endl;
 }
@@ -72,30 +74,26 @@ void ClapTrap::attack(const std::string &target) {
 	}
 }
 
-void ClapTrap::takeDamage(unsigned int amount)
-{
-	if (_hp > amount){
-		std::cout << "ClapTrap " << _name << " takes " << amount << " damage" << std::endl;
-		_hp -= amount;
-		if (_hp < 0){
-			_hp = 0;
-		std::cout << "God blessed me! I'm still alive, but i can't do something" << std::endl;			
-		}
+void ClapTrap::takeDamage(unsigned int amount) {
+	std::cout << "ClapTrap " << _name << " takes " << amount << " damage" << std::endl;
+	_hp -= amount;
+	if (_hp < 0){
+		setHitPoints(0);
+		std::cout << "God blessed me! I'm still alive, but i can't do something" << std::endl;
 	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (getEnergyPoints() > 0) {
+	if (getEnergyPoints() > 0 && getHitPoints() > 0) {
 		std::cout << "ClapTrap " << _name << " healed " << amount << " hit points" << std::endl;
-		if (_hp + amount >= _hp)
+		if (_hp + amount >= 10)
 		{
 			std::cout << "ClapTrap " << _name << "> I AM FULL OF HEALTH" << std::endl;
-			_hp = (unsigned)(-1);
+			setHitPoints(10);
 		}
 		else {
 			std::cout << "ClapTrap " << _name << " thanks God, I'm back to " << amount << std::endl;
 			setHitPoints(this->_hp + amount);
-			std::cout << "    now I'm on " << _hp << " from death\n";
 			setEnergyPoints(this->_energy - 1);
 		}
 	}
@@ -103,6 +101,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "I can't healing, because I'm so damn tired" << std::endl;
 	}
 }
+
 // external functions
 
 std::ostream&	operator<<(std::ostream& o, const ClapTrap& clap_trap) {

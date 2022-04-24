@@ -10,36 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-	ClapTrap	cleric ("Futher Tuck");
-	ClapTrap	rougue ("Robin Hood");
+	ScavTrap	redWarrior ("Timur");
+	ScavTrap	whiteWarrior ("Onotolle");
 
 	std::cout << std::endl;
-	rougue.setAtackDamage(5);
-	std::cout << std::endl;
-	
-	rougue.attack(cleric.getName());
-	std::cout << rougue << std::endl;
-	cleric .takeDamage(5);
-	std::cout << cleric << std::endl;
-	cleric .beRepaired(5);
+	redWarrior.attack(whiteWarrior.getName());
+	std::cout << redWarrior << std::endl;
+	whiteWarrior.takeDamage(redWarrior.getAtackDamage());
+	std::cout << whiteWarrior << std::endl;
+	whiteWarrior.beRepaired(redWarrior.getAtackDamage());
 	std::cout << std::endl;
 
-	rougue.setAtackDamage(10);
-	std::cout << std::endl;
+	redWarrior.guardGate();
+	std::cout << redWarrior << std::endl;
 
-	rougue.attack(cleric .getName());
+	redWarrior.attack(whiteWarrior .getName());
+	whiteWarrior .takeDamage(redWarrior.getAtackDamage());
 	std::cout << std::endl;
-	cleric .takeDamage(10);
+	redWarrior.attack(whiteWarrior .getName());
+	whiteWarrior.takeDamage(redWarrior.getAtackDamage());
+	std::cout << whiteWarrior << std::endl;
+	whiteWarrior.beRepaired(redWarrior.getAtackDamage());
 	std::cout << std::endl;
-	rougue.attack(cleric .getName());
-	std::cout << std::endl;
-	cleric .takeDamage(10);
-	std::cout << std::endl;
-	std::cout << rougue << std::endl;
-	std::cout << cleric << std::endl;
+	std::cout << redWarrior << std::endl;
+	std::cout << whiteWarrior << std::endl;
 	return (0);
 }

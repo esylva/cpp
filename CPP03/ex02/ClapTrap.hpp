@@ -20,6 +20,7 @@ namespace tlucanti
 	class ClapTrap
 	{
 	public:
+		ClapTrap();
 		ClapTrap(const std::string &name);
 		ClapTrap(const ClapTrap &cpy);
 		~ClapTrap();
@@ -30,7 +31,6 @@ namespace tlucanti
 		void beRepaired(unsigned int amount);
 
 	protected:
-		ClapTrap();
 		std::string		name;
 		unsigned int	hp;
 		unsigned int	energy;

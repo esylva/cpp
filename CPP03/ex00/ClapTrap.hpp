@@ -39,7 +39,6 @@ class ClapTrap
 		void		setAtackDamage(int atack) ;
 
 	private:
-
 		std::string		_name;
 		unsigned int	_hp;
 		unsigned int	_energy;
