@@ -12,44 +12,30 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(const std::string &_name)
-    : ClapTrap(_name + "_clap_name"), ScavTrap(_name), FragTrap(_name)
+DiamondTrap::DiamondTrap(const std::string &name)
+    : ClapTrap(name + "_clap_name")
+	// , ScavTrap(name), FragTrap(name)
 {
-	name = _name;
-	std::cout << "    DiamondTrap <" << name << "> has come with attributes:\n";
-	std::cout << "      hp <" << hp << ">, energy <" << energy << ">, damage <" <<
-			  damage << ">\n";
+	this->name = name;
+	// ClapTrap::name = this->name + "_clap_name";
+		this->_hp = FragTrap::Hit_points;
+	this->_energy = ScavTrap::Energy_points;
+	this->_damage = FragTrap::Attack_damage;
+	std::cout << "DiamondTrap " << _name << " came to you" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &cpy)
 	: ClapTrap(), ScavTrap(), FragTrap()
 {
-	name = cpy.name;
-	ClapTrap::name = name + "_clap_name";
-	hp = cpy.hp;
-	energy = cpy.energy;
-	damage = cpy.damage;
+	_name = cpy._name;
+	ClapTrap::_name = _name + "_clap_name";
+	_hp = cpy._hp;
+	_energy = cpy._energy;
+	_damage = cpy._damage;
 }
 
 DiamondTrap::~DiamondTrap() {}
 
-void DiamondTrap::whoAmI() const
-{
-//	std::cout << "    DiamondTrap <" << name << "> The Diamond Trap, rose by"
-//		"Frag <" << FragTrap::name << "> and Clap <" << ClapTrap::name << ">\n";
+void DiamondTrap::whoAmI() const {
+	std::cout << "I am DiamondTrap " << name << " and ClapTrap " << ClapTrap::name << std::endl;
 }
-
-// DiamondTrap::DiamondTrap()
-// {
-//     this->name = "Default";
-//     ClapTrap::name = this->name + "_clap_name";
-//     this->Hit_points = FragTrap::Hit_points;
-//     this->Energy_points = ScavTrap::Energy_points;
-//     this->Attack_damage = FragTrap::Attack_damage;
-//     std::cout << "Constructor DiamondTrap " << this->name << " called" << std::endl;
-//     return ;
-// }
-// 18:31
-// вот так: this->Hit_points = FragTrap::Hit_points;
-
-// eSylva  18:31

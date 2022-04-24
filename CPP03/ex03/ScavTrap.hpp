@@ -13,18 +13,21 @@
 #pragma once
 #include "ClapTrap.hpp"
 
-class ScavTrap : virtual ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 public:
 	ScavTrap();
 	ScavTrap(const std::string &name);
 	ScavTrap(const ScavTrap &cpy);
-	~ScavTrap();
+	virtual ~ScavTrap();
 	ScavTrap &operator =(const ScavTrap &cpy);
 
 	void guardGate() ;
-	void attack(const std::string &target);
+virtual	void attack(const std::string &target);
 
-private:
+protected:
+		// static int	_startHP;
+		// static int	_startEnergy;
+		// static int	_startDamage; 
 };
 
