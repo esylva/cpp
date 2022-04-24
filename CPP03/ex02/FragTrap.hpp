@@ -25,6 +25,9 @@ public:
 	void highFivesGuys(void);
 	void attack(const std::string &target);
 
-private:
+protected:
+	static int _initHP;
+	static int _initEP;
+	static int _initAD;
 };
 

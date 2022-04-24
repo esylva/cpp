@@ -25,19 +25,19 @@ class ClapTrap
 		virtual ~ClapTrap();
 		ClapTrap &operator =(const ClapTrap &cpy);
 
-	virtual	void 		attack(const std::string &target);
-		void 		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
+		virtual	void 		attack(const std::string &target);
+		void 				takeDamage(unsigned int amount);
+		void				beRepaired(unsigned int amount);
 
-	virtual	std::string	getName(void) const;
-		int			getHitPoints(void) const;
-		int			getEnergyPoints(void) const;
-		int			getAtackDamage(void) const;
+		virtual	std::string	getName(void) const;
+		int					getHitPoints(void) const;
+		int					getEnergyPoints(void) const;
+		int					getAtackDamage(void) const;
 
-	virtual	void		setName(std::string);
-		void		setHitPoints(int hp) ;
-		void		setEnergyPoints(int energy) ;
-		void		setAtackDamage(int atack) ;
+		virtual	void		setName(std::string);
+		void				setHitPoints(int hp) ;
+		void				setEnergyPoints(int energy) ;
+		void				setAtackDamage(int atack) ;
 
 	protected:
 		std::string		_name;

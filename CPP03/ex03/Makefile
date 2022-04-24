@@ -19,7 +19,7 @@ D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
 
 GCC := c++
 
-FLAGS := -Wall -Wextra -Werror -std=c++98 -g
+FLAGS := -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 all: ${NAME}
 

@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(const ClapTrap &cpy): _name(cpy._name), _hp(cpy._hp), _energy
 		std::cout << "ClapTrap " << _name << " Cloning himself!" << std::endl;
 }
 
-virtual ClapTrap::~ClapTrap() {
+ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap " << _name << " returns home." << std::endl;
 }
 

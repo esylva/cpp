@@ -12,6 +12,10 @@
 
 #include "FragTrap.hpp"
 
+	int FragTrap::_initHP = 100;
+	int FragTrap::_initEP = 100;
+	int FragTrap::_initAD = 30;
+
 FragTrap::FragTrap(): ClapTrap::ClapTrap() {}
 
 FragTrap::FragTrap(const std::string &name): ClapTrap(name) {
@@ -21,9 +25,9 @@ FragTrap::FragTrap(const std::string &name): ClapTrap(name) {
 	", attack power is " << this->getAtackDamage() << std::endl;	
 	
 	this->setName(name);
-	this->setHitPoints(100);
-	this->setEnergyPoints(100);
-	this->setAtackDamage(30);
+	this->setHitPoints(_initHP);
+	this->setEnergyPoints(_initEP);
+	this->setAtackDamage(_initAD);
 
 	std::cout << "FragTrap " << this->getName() << " ready to serve." << std::endl << 
 	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 

@@ -12,6 +12,10 @@
 
 #include "ScavTrap.hpp"
 
+	int ScavTrap::_initHP = 100;
+	int ScavTrap::_initEP = 50;
+	int ScavTrap::_initAD = 20;
+
 ScavTrap::ScavTrap(): ClapTrap::ClapTrap() {}
 
 ScavTrap::ScavTrap(const std::string &name): ClapTrap(name) {
@@ -21,9 +25,9 @@ ScavTrap::ScavTrap(const std::string &name): ClapTrap(name) {
 	", attack power is " << this->getAtackDamage() << std::endl;	
 	
 	this->setName(name);
-	this->setHitPoints(100);
-	this->setEnergyPoints(50);
-	this->setAtackDamage(20);
+	this->setHitPoints(_initHP);
+	this->setEnergyPoints(_initEP);
+	this->setAtackDamage(_initAD);
 
 	std::cout << "  ScavTrap " << this->getName() << " ready to serve." << std::endl << 
 	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 

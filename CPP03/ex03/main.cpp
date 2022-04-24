@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-	ScavTrap	redWarrior ("Timur");
-	FragTrap	whiteWarrior ("Onotolle");
+	DiamondTrap	redWarrior ("Beaver");
+	DiamondTrap	whiteWarrior("Donkey");
 
 	std::cout << std::endl;
 	redWarrior.attack(whiteWarrior.getName());
@@ -43,7 +42,12 @@ int main(void)
 	std::cout << std::endl;
 
 	whiteWarrior.highFivesGuys();
+	redWarrior.highFivesGuys();
 	std::cout << std::endl;
+
+	whiteWarrior.whoAmI();
+	redWarrior.whoAmI();
+
 	std::cout << redWarrior << std::endl;
 	std::cout << whiteWarrior << std::endl;
 

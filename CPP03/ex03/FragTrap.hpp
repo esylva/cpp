@@ -26,8 +26,8 @@ public:
 	void attack(const std::string &target);
 
 protected:
-		// static int	_startHP;
-		// static int	_startEnergy;
-		// static int	_startDamage; 
+	static int _initHP;
+	static int _initEP;
+	static int _initAD; 
 };
 
