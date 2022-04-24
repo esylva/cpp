@@ -3,44 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:14:56 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 17:19:07 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 10:45:06 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 10:45:06 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-tlucanti::FragTrap::FragTrap() {}
+FragTrap::FragTrap(): ClapTrap::ClapTrap() {}
 
-tlucanti::FragTrap::FragTrap(const std::string &_name)
-	: ClapTrap(_name)
-{
-	hp = 100;
-	energy = -1;
-	damage = 30;
-	std::cout << "  FragTrap <" << name << "> constructored\n";
+FragTrap::FragTrap(const std::string &name): ClapTrap(name) {
+	
+	std::cout << "FragTrap " << this->getName() << " is preparing." << std::endl << 
+	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
+	", attack power is " << this->getAtackDamage() << std::endl;	
+	
+	this->setName(name);
+	this->setHitPoints(100);
+	this->setEnergyPoints(100);
+	this->setAtackDamage(30);
+
+	std::cout << "FragTrap " << this->getName() << " ready to serve." << std::endl << 
+	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
+	", attack power is " << this->getAtackDamage() << std::endl;
 }
 
-tlucanti::FragTrap::FragTrap(const FragTrap &cpy)
-	: ClapTrap(cpy)
-{
-	hp = 100;
-	energy = 100;
-	damage = 30;
-	std::cout << "  FragTrap <" << name << "> has been cloned with attributes:\n";
-	std::cout << "    hp <" << hp << ">, energy <" << energy << ">, damage <" <<
-		damage << ">\n";
+FragTrap::FragTrap(const FragTrap &cpy) : ClapTrap(cpy) {
+	this->setName(cpy.getName());
+	this->setHitPoints(cpy.getHitPoints());
+	this->setEnergyPoints(cpy.getHitPoints());
+	this->setAtackDamage(cpy.getAtackDamage());
+
+	std::cout << "  FragTrap <" << this->getName() << "> has been cloned."  << std::endl;
 }
 
-void
-tlucanti::FragTrap::highFivesGuys() const
-{
-	std::cout << "  FragTrap <" << name << "> requesting positive high five\n";
+FragTrap::~FragTrap() {
+	std::cout << "FragTrap " << this->getName() << " destroed." << std::endl;
 }
 
-tlucanti::FragTrap::~FragTrap()
-{
-	std::cout << "  FragTrap <" << name << "> has been obliterated\n";
+FragTrap & FragTrap::operator =(const FragTrap &cpy) {
+	if (this != &cpy) {
+		this->setName(cpy.getName());
+		this->setHitPoints(cpy.getHitPoints());
+		this->setEnergyPoints(cpy.getHitPoints());
+		this->setAtackDamage(cpy.getAtackDamage());		
+	}
+	return *this;
+}
+void FragTrap::highFivesGuys(void) {
+	std::cout << "FragTrap " << this->getName() << " gives you five" << std::endl;
+ 
 }

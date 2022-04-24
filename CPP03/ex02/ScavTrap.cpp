@@ -3,53 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 16:21:48 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 16:37:21 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 00:04:28 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 00:04:28 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-tlucanti::ScavTrap::ScavTrap() {}
+ScavTrap::ScavTrap(): ClapTrap::ClapTrap() {}
 
-tlucanti::ScavTrap::ScavTrap(const std::string &_name)
-	: ClapTrap(_name)
-{
-	hp = 100;
-	energy = 50;
-	damage = 20;
-	std::cout << "  ScavTrap <" << name << "> has come with attributes:\n";
-	std::cout << "    hp <" << hp << ">, energy <" << energy << ">, damage <" <<
-		damage << ">\n";
+ScavTrap::ScavTrap(const std::string &name): ClapTrap(name) {
+	
+	std::cout << "  ScavTrap " << this->getName() << " is preparing." << std::endl << 
+	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
+	", attack power is " << this->getAtackDamage() << std::endl;	
+	
+	this->setName(name);
+	this->setHitPoints(100);
+	this->setEnergyPoints(50);
+	this->setAtackDamage(20);
+
+	std::cout << "  ScavTrap " << this->getName() << " ready to serve." << std::endl << 
+	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
+	", attack power is " << this->getAtackDamage() << std::endl;
 }
 
-tlucanti::ScavTrap::ScavTrap(const ScavTrap &cpy)
-	: ClapTrap(cpy)
-{
-	hp = 100;
-	energy = 50;
-	damage = 20;
-	std::cout << "  ScavTrap <" << name << "> has been cloned with attributes:\n";
-	std::cout << "    hp <" << hp << ">, energy <" << energy << ">, damage <" <<
-		damage << ">\n";
+ScavTrap::ScavTrap(const ScavTrap &cpy) : ClapTrap(cpy) {
+	this->setName(cpy.getName());
+	this->setHitPoints(cpy.getHitPoints());
+	this->setEnergyPoints(cpy.getHitPoints());
+	this->setAtackDamage(cpy.getAtackDamage());
+
+	std::cout << "  ScavTrap <" << this->getName() << "> has been cloned."  << std::endl;
 }
 
-void
-tlucanti::ScavTrap::attack(const std::string &target) const
-{
-	std::cout << "  ScavTrap <" << name << "> attack <" << target << ">, causing "
-		"<" << damage << "> points of damage!\n";
+ScavTrap::~ScavTrap() {
+	std::cout << "ScavTrap " << this->getName() << " destroed." << std::endl;
 }
 
-void
-tlucanti::ScavTrap::guardGate() const
-{
-	std::cout << "  ScavTrap <" << name << "> have enterred in GateKeeper mode\n";
+ScavTrap & ScavTrap::operator =(const ScavTrap &cpy) {
+	if (this != &cpy) {
+		this->setName(cpy.getName());
+		this->setHitPoints(cpy.getHitPoints());
+		this->setEnergyPoints(cpy.getHitPoints());
+		this->setAtackDamage(cpy.getAtackDamage());		
+	}
+	return *this;
 }
 
-tlucanti::ScavTrap::~ScavTrap()
-{
-	std::cout << "  ScavTrap <" << name << "> has been obliterated\n";
+void ScavTrap::guardGate() {
+	std::cout << "ScavTrap " << this->getName() << " have enterred in GateKeeper mode" << std::endl;
+	setAtackDamage(this->getAtackDamage() + 50);
+	std::cout << "Attack damage increased" << std::endl; 
 }

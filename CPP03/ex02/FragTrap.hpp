@@ -3,30 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:06:10 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 17:14:33 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 10:45:23 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 10:45:23 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include <string>
-#include <iostream>
 #include "ClapTrap.hpp"
 
-namespace tlucanti
+class FragTrap : public ClapTrap
 {
-	class FragTrap : public ClapTrap
-	{
-	public:
-		FragTrap(const std::string &_name);
-		FragTrap(const FragTrap &cpy);
-		~FragTrap();
+public:
+	FragTrap();
+	FragTrap(const std::string &name);
+	FragTrap(const FragTrap &cpy);
+	~FragTrap();
+	FragTrap &operator =(const FragTrap &cpy);
 
-		void highFivesGuys() const;
-	private:
-		FragTrap();
-	};
-}
+	void highFivesGuys(void);
+
+private:
+};
+

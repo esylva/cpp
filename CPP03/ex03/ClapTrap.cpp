@@ -3,95 +3,114 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 13:05:56 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 15:41:57 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 00:04:16 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 00:04:16 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-tlucanti::ClapTrap::ClapTrap(const std::string &_name)
-	: name(_name), hp(10), energy(10), damage(0)
-{
-	std::cout << "ClapTrap <" << name << "> constructored\n";
+ClapTrap::ClapTrap(){}
+
+ClapTrap::ClapTrap(const std::string &name): _name(name), _hp(10), _energy(10), _damage(0) {
+	std::cout << std::endl << "ClapTrap " << _name << " greets you!" << std::endl;
 }
 
-tlucanti::ClapTrap::ClapTrap() {}
-
-tlucanti::ClapTrap::ClapTrap(const tlucanti::ClapTrap &cpy)
-	: name(cpy.name), hp(cpy.hp), energy(cpy.energy), damage(cpy.damage)
-{
-	std::cout << "Clap trap <" << name << "> copied\n";
+ClapTrap::ClapTrap(const ClapTrap &cpy): _name(cpy._name), _hp(cpy._hp), _energy(cpy._energy), _damage(cpy._damage) {
+		std::cout << "ClapTrap " << _name << " Cloning himself!" << std::endl;
 }
 
-tlucanti::ClapTrap::~ClapTrap()
-{
-	std::cout << "ClapTrap <" << name << "> has been decomposed\n";
+ClapTrap::~ClapTrap() {
+	std::cout << "ClapTrap " << _name << " returns home." << std::endl;
 }
 
-#if __cplusplus > 199711L
-
-tlucanti::ClapTrap &
-tlucanti::ClapTrap::operator =(const tlucanti::ClapTrap &cpy) = default;
-
-#else
-
-tlucanti::ClapTrap &
-tlucanti::ClapTrap::operator =(const tlucanti::ClapTrap &cpy)
+ClapTrap & ClapTrap::operator =(const ClapTrap &cpy)
 {
-	name = cpy.name;
-	hp = cpy.hp;
-	energy = cpy.energy;
-	damage = cpy.damage;
+	_name = cpy._name;
+	_hp = cpy._hp;
+	_energy = cpy._energy;
+	_damage = cpy._damage;
 	return *this;
 }
 
-#endif
-
-void
-tlucanti::ClapTrap::attack(const std::string &target) const
-{
-	std::cout << "ClapTrap <" << name << "> attack <" << target << ">, causing "
-		"<" << damage << "> points of damage!\n";
+std::string	ClapTrap::getName(void) const {
+	return _name;
 }
 
-void
-tlucanti::ClapTrap::takeDamage(unsigned int amount)
-{
-	if (amount == 0)
-		return ;
-	if (hp > amount)
-	{
-		std::cout << "ClapTrap <" << name << "> bruh, I caught an masline of" <<
-			" <" << amount << ">\n";
-		hp -= amount;
-		std::cout << "    now I'm on " << hp << " from death\n";
-	}
-	else
-	{
-		std::cout << "ClapTrap <" << name << "> ✝✝✝ RIP ✝✝✝\n";
-		hp = 0;
-	}
+int		ClapTrap::getAtackDamage( void ) const {
+	return _damage;
+}
+
+int		ClapTrap::getEnergyPoints( void ) const {
+	return _energy;
+}
+
+int		ClapTrap::getHitPoints( void ) const {
+	return _hp;
+}
+
+void		ClapTrap::setName(std::string name){
+	this->_name = name;
 }
 
 
-void
-tlucanti::ClapTrap::beRepaired(unsigned int amount)
-{
-	if (amount == 0)
-		return ;
-	if (hp + amount < hp)
-	{
-		std::cout << "ClapTrap <" << name << "> I AM FULL OF HEALTH\n";
-		hp = (unsigned)(-1);
+void	ClapTrap::setAtackDamage( int atackDamage ) {
+	this->_damage = atackDamage;
+}
+
+void	ClapTrap::setEnergyPoints( int energy ) {
+	this->_energy = energy;
+}
+void	ClapTrap::setHitPoints(  int hp ) {
+	this->_hp = hp;
+}
+
+// internal functions
+
+void ClapTrap::attack(const std::string &target) {
+	if (getEnergyPoints() == 0 || getHitPoints() == 0) {
+		std::cout << "I can't attack, because I'm so damn tired" << std::endl;	
 	}
-	else
-	{
-		std::cout << "ClapTrap <" << name << "> thanks God, I'm back to <" <<
-			amount << ">\n";
-		hp += amount;
-		std::cout << "    now I'm on " << hp << " from death\n";
+	else {
+		std::cout << _name << " attack " << target << ", causing "  << _damage << " points of damage!" << std::endl;
+		setEnergyPoints(this->_energy - 1);
 	}
+}
+
+void ClapTrap::takeDamage(unsigned int amount) {
+	std::cout << _name << " takes " << amount << " damage" << std::endl;
+		setHitPoints(getHitPoints() - amount);
+		if (getHitPoints() < 0){
+			setHitPoints(0);
+			std::cout << "God blessed me! I'm still alive, but i can't do something" << std::endl;
+	}
+}
+
+void ClapTrap::beRepaired(unsigned int amount) {
+	if (this->getEnergyPoints() > 0 && this->getHitPoints() > 0) {
+		std::cout << "ClapTrap " << _name << " healed " << amount << " hit points" << std::endl;
+		setHitPoints(this->_hp + amount);
+		setEnergyPoints(this->_energy - 1);
+	}
+	else {
+		std::cout << "I can't healing, because I'm so damn tired" << std::endl;
+	}
+}
+
+// external functions
+
+std::ostream&	operator<<(std::ostream& o, const ClapTrap& clap_trap) {
+	o
+		<< "[STATUS] "
+		<< clap_trap.getName()
+		<< " - Hit Points:"
+		<< clap_trap.getHitPoints()
+		<< " Energy Points:"
+		<< clap_trap.getEnergyPoints()
+		<< " Atack Damage:"
+		<< clap_trap.getAtackDamage()
+		<< std::endl;
+	return (o);
 }

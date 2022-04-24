@@ -3,38 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 12:59:40 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 13:39:39 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 00:04:05 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 00:04:05 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+# include <iostream>
 #include <string>
-#include <iostream>
 
-namespace tlucanti
+
+class ClapTrap
 {
-	class ClapTrap
-	{
 	public:
+		ClapTrap();
 		ClapTrap(const std::string &name);
 		ClapTrap(const ClapTrap &cpy);
 		~ClapTrap();
 		ClapTrap &operator =(const ClapTrap &cpy);
 
-		virtual void attack(const std::string &target) const;
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		void 		attack(const std::string &target);
+		void 		takeDamage(unsigned int amount);
+		void		beRepaired(unsigned int amount);
 
-	protected:
-		ClapTrap();
-		std::string		name;
-		unsigned int	hp;
-		unsigned int	energy;
-		unsigned int	damage;
+		std::string	getName(void) const;
+		int			getHitPoints(void) const;
+		int			getEnergyPoints(void) const;
+		int			getAtackDamage(void) const;
 
-	};
-}
+		void		setName(std::string);
+		void		setHitPoints(int hp) ;
+		void		setEnergyPoints(int energy) ;
+		void		setAtackDamage(int atack) ;
+
+	private:
+		std::string		_name;
+		unsigned int	_hp;
+		unsigned int	_energy;
+		unsigned int	_damage;
+};
+	std::ostream&	operator<<(std::ostream& o, const ClapTrap& clap_trap);
+
+#endif

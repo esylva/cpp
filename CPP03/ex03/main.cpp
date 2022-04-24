@@ -3,23 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 13:06:02 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 18:26:15 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 00:03:57 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 00:03:57 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int main()
+int main(void)
 {
-    tlucanti::DiamondTrap a("trap1");
-	tlucanti::DiamondTrap b(a);
-	tlucanti::DiamondTrap c("trap2");
-	c = b;
-	c.attack("trap1");
-	a.guardGate();
-	a.highFivesGuys();
-	a.whoAmI();
+	ScavTrap	redWarrior ("Timur");
+	FragTrap	whiteWarrior ("Onotolle");
+
+	std::cout << std::endl;
+	redWarrior.attack(whiteWarrior.getName());
+	std::cout << redWarrior << std::endl;
+	whiteWarrior.takeDamage(redWarrior.getAtackDamage());
+	std::cout << whiteWarrior << std::endl;
+	whiteWarrior.beRepaired(redWarrior.getAtackDamage());
+	std::cout << std::endl;
+
+	redWarrior.guardGate();
+	std::cout << redWarrior << std::endl;
+
+	redWarrior.attack(whiteWarrior .getName());
+	whiteWarrior.takeDamage(redWarrior.getAtackDamage());
+	std::cout << std::endl;
+	redWarrior.attack(whiteWarrior .getName());
+	whiteWarrior.takeDamage(redWarrior.getAtackDamage());
+	std::cout << whiteWarrior << std::endl;
+	whiteWarrior.beRepaired(redWarrior.getAtackDamage());
+	std::cout << std::endl;
+
+	whiteWarrior.highFivesGuys();
+	std::cout << std::endl;
+	std::cout << redWarrior << std::endl;
+	std::cout << whiteWarrior << std::endl;
+
+	return (0);
 }

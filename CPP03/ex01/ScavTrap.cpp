@@ -54,7 +54,7 @@ ScavTrap & ScavTrap::operator =(const ScavTrap &cpy) {
 }
 
 void ScavTrap::guardGate() {
-	std::cout << "ScavTrap <" << this->getName() << "> have enterred in GateKeeper mode" << std::endl;
+	std::cout << "ScavTrap " << this->getName() << " have enterred in GateKeeper mode" << std::endl;
 	setAtackDamage(this->getAtackDamage() + 50);
 	std::cout << "Attack damage increased" << std::endl; 
 }
