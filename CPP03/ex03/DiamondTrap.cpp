@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:26:47 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 19:03:54 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 11:04:13 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 11:04:13 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-tlucanti::DiamondTrap::DiamondTrap(const std::string &_name)
+DiamondTrap::DiamondTrap(const std::string &_name)
     : ClapTrap(_name + "_clap_name"), ScavTrap(_name), FragTrap(_name)
 {
 	name = _name;
@@ -21,7 +21,7 @@ tlucanti::DiamondTrap::DiamondTrap(const std::string &_name)
 			  damage << ">\n";
 }
 
-tlucanti::DiamondTrap::DiamondTrap(const tlucanti::DiamondTrap &cpy)
+DiamondTrap::DiamondTrap(const DiamondTrap &cpy)
 	: ClapTrap(), ScavTrap(), FragTrap()
 {
 	name = cpy.name;
@@ -31,10 +31,9 @@ tlucanti::DiamondTrap::DiamondTrap(const tlucanti::DiamondTrap &cpy)
 	damage = cpy.damage;
 }
 
-tlucanti::DiamondTrap::~DiamondTrap() {}
+DiamondTrap::~DiamondTrap() {}
 
-void
-tlucanti::DiamondTrap::whoAmI() const
+void DiamondTrap::whoAmI() const
 {
 //	std::cout << "    DiamondTrap <" << name << "> The Diamond Trap, rose by"
 //		"Frag <" << FragTrap::name << "> and Clap <" << ClapTrap::name << ">\n";

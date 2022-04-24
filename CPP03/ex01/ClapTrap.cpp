@@ -74,8 +74,8 @@ void ClapTrap::attack(const std::string &target) {
 		std::cout << "I can't attack, because I'm so damn tired" << std::endl;	
 	}
 	else {
-		std::cout << _name << " attack " << target << ", causing "  << _damage << " points of damage!" << std::endl;
-		setEnergyPoints(this->_energy - 1);
+		std::cout << "ClapTrap "<< this->getName() << " attacks " << target << ", causing "  << this->getAtackDamage() << std::endl;
+		setEnergyPoints(this->getEnergyPoints() - 1);
 	}
 }
 

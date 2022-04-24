@@ -52,6 +52,17 @@ FragTrap & FragTrap::operator =(const FragTrap &cpy) {
 	}
 	return *this;
 }
+
+void FragTrap::attack(const std::string &target) {
+	if (getEnergyPoints() == 0 || getHitPoints() == 0) {
+		std::cout << "I can't attack, because I'm so damn tired" << std::endl;	
+	}
+	else {
+		std::cout << "FragTrap " << this->getName() << " attacks " << target << ", causing "  << this->getAtackDamage() << " points of damage!" << std::endl;
+		setEnergyPoints(this->getEnergyPoints() - 1);
+	}
+}
+
 void FragTrap::highFivesGuys(void) {
 	std::cout << "FragTrap " << this->getName() << " gives you five" << std::endl;
  

@@ -23,6 +23,7 @@ public:
 	FragTrap &operator =(const FragTrap &cpy);
 
 	void highFivesGuys(void);
+	void attack(const std::string &target);
 
 private:
 };

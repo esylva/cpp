@@ -58,3 +58,13 @@ void ScavTrap::guardGate() {
 	setAtackDamage(this->getAtackDamage() + 50);
 	std::cout << "Attack damage increased" << std::endl; 
 }
+
+void ScavTrap::attack(const std::string &target) {
+	if (getEnergyPoints() == 0 || getHitPoints() == 0) {
+		std::cout << "I can't attack, because I'm so damn tired" << std::endl;	
+	}
+	else {
+		std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing "  << this->getAtackDamage() << " points of damage!" << std::endl;
+		setEnergyPoints(this->getEnergyPoints() - 1);
+	}
+}

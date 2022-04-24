@@ -26,6 +26,10 @@ int main(void)
 	whiteWarrior.beRepaired(redWarrior.getAtackDamage());
 	std::cout << std::endl;
 
+	whiteWarrior.attack(redWarrior.getName());
+	redWarrior.takeDamage(whiteWarrior.getAtackDamage());
+	std::cout << std::endl;
+
 	redWarrior.guardGate();
 	std::cout << redWarrior << std::endl;
 

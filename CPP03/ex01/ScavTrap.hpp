@@ -23,6 +23,7 @@ public:
 	ScavTrap &operator =(const ScavTrap &cpy);
 
 	void guardGate() ;
+	void attack(const std::string &target);
 
 private:
 };

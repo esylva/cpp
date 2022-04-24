@@ -3,36 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kostya <kostya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:25:31 by kostya            #+#    #+#             */
-/*   Updated: 2022/01/09 17:31:58 by kostya           ###   ########.fr       */
+/*   Created: 2022/04/24 11:04:21 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/24 11:04:21 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include <string>
-#include <iostream>
-
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-#include "ClapTrap.hpp"
 
-namespace tlucanti
+
+class DiamondTrap : public ScavTrap, public FragTrap
 {
-	class DiamondTrap : public ScavTrap, public FragTrap
-	{
-	public:
-		DiamondTrap(const std::string &_name);
-		explicit DiamondTrap(const DiamondTrap &cpy);
-		~DiamondTrap();
+public:
+	DiamondTrap(const std::string &_name);
+	explicit DiamondTrap(const DiamondTrap &cpy);
+	~DiamondTrap();
 
-		void whoAmI() const;
+	void whoAmI() const;
 
-	private:
-		std::string name;
+private:
+	std::string name;
 
-		DiamondTrap();
-	};
-}
+	DiamondTrap();
+};
+
