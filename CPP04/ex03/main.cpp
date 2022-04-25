@@ -10,75 +10,90 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
+#include "MateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
 
-int main (){
-	std::cout << "--------------------Example from subject--------------------" << std::endl;
-
-	const Animal*	cat = new Cat();
-	cat->makeSound();
+int main(void) 
+{
+	// subject
+	IMateriaSource* know = new MateriaSource();
+	know->learnMateria(new Ice());
+	know->learnMateria(new Cure());
 	std::cout << std::endl;
 
-	const Animal*	dog = new Dog();
-	dog->makeSound();
+	Character* mage = new Character("Mage");
+	AMateria* tmp;
+	tmp = know->createMateria("ice");
+	mage->equip(tmp);
+	tmp = know->createMateria("cure");
+	mage->equip(tmp);
 	std::cout << std::endl;
 
-	// const Animal*	animal = new Animal();
+	ICharacter* dummy = new Character();
+	mage->use(0, *dummy);
+	mage->use(1, *dummy);
 	std::cout << std::endl;
 
-	delete	cat;
+
+	// deep copy MateriaSource
+	std::cout << "--- deep copy MateriaSource ---" << std::endl;
+
+	MateriaSource* know2 = new MateriaSource();
+	know2->learnMateria(new Ice());
+	know2->learnMateria(new Cure());
+	MateriaSource* know_copy = new MateriaSource(*know2);
+	delete know2;
 	std::cout << std::endl;
 
-	delete	dog;
+	// full inventory and unequip
+	std::cout << "--- full inventory and unequip ---" << std::endl;
+	tmp = know_copy->createMateria("ice");
+	mage->equip(tmp);
 	std::cout << std::endl;
 
-	// delete	animal;
+	AMateria *last_item = know_copy->createMateria("cure");
+	mage->equip(last_item);
 	std::cout << std::endl;
 
-	std::cout << "---------------------Stak example--------------------" << std::endl;
-
-	Cat	stack_cat;
-	stack_cat.makeSound();
+	mage->equip(tmp);
 	std::cout << std::endl;
 
-	Cat	operator_cat = stack_cat;
+	mage->unequip(3);
 	std::cout << std::endl;
 
-	Cat	copy_cat(stack_cat);
+	delete last_item;
+
+	// deep copy Character
+	std::cout << "--- deep copy Character ---" << std::endl;
+
+	Character* mage_copy = new Character(*mage);
+	delete mage;
 	std::cout << std::endl;
 
-	Dog	stack_dog;
-	stack_dog.makeSound();
+	mage_copy->use(0, *dummy);
+	mage_copy->use(1, *dummy);
+	// empty
+	std::cout << "--- try to use empty ---" << std::endl;
+	mage_copy->use(3, *dummy);
 	std::cout << std::endl;
 
-	Dog	operator_dog = stack_dog;
+	// materia that does not exist
+	std::cout << "--- try to create other type of materia ---" << std::endl;
+	tmp = know->createMateria("does_not_exist");
+	std::cout << "--- And now create ice ---" << std::endl;
+	tmp = know->createMateria("ice");
 	std::cout << std::endl;
 
-	Dog	copy_dog(stack_dog);
+	mage_copy->equip(tmp);
+	mage_copy->use(3, *dummy);
 	std::cout << std::endl;
 
-	std::cout << "---------------------Array of 10 animals--------------------" << std::endl;
-
-	int		len = 10;
-	int		k = 0;
-	Animal	*tab[len];
-
-	while (k < (len / 2))
-	{
-		tab[k] = new Dog();
-		k++;
-	}
-	std::cout << std::endl << k << " " << tab[k - 1]->getType() << "s created" << std::endl << std::endl;
-	while (k < len)
-	{
-		tab[k] = new Cat();
-		k++;
-	}
-	std::cout << std::endl << k / 2 << " " << tab[k - 1]->getType() << "s created" << std::endl << std::endl;
-	while (--k >= 0)
-		delete tab[k];
+	// delete objects
+	delete dummy;
+	delete mage_copy;
+	delete know;
+	delete know_copy;
 	return (0);
-
 }

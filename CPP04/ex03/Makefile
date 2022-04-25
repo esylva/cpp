@@ -10,33 +10,46 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME := animal
- 
-SRCS := main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp 
+NAME = animal
 
-OBJS := ${patsubst %.cpp,%.o,${SRCS}}
-D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
+SRC =	./AMateria.cpp \
+		./Ice.cpp \
+		./Cure.cpp \
+		./Character.cpp \
+		./MateriaSource.cpp \
+		./main.cpp
 
-GCC := c++
+OBJS =	./AMateria.o \
+		./Ice.o \
+		./Cure.o \
+		./Character.o \
+		./MateriaSource.o \
+		./main.o
 
-FLAGS := -Wall -Wextra -Werror -std=c++98 -Wshadow
+CC	= c++
 
-all: ${NAME}
+RM	= rm -rf
 
-${NAME} : ${OBJS}
-	${GCC} ${OBJS} -o ${NAME}
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow
 
-%.o : %.cpp
-	${GCC} ${FLAGS} -c $< -o $@ -MD
+$(NAME):	$(OBJS)
+			@echo "\033[0;32m[OK]\033[0m    \033[0;38;5;199mCompiling\033[0m $@"
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-include ${wildcard ${D_FILES}}
+$(OBJS):	$(SRC)
+			@$(CC) $(CFLAGS) -c $(SRC)
+			@echo "\033[0;32m[OK]\033[0m    \033[0;38;5;199mCompiling\033[0m $@"
+
+all:		$(NAME)
 
 clean:
-	rm -rf ${OBJS} ${D_FILES}
+			@$(RM) $(OBJS)
+			@echo "\033[0;32m[OK]\033[0m    \033[0;38;5;44mRemoving objects\033[0m"
 
-fclean: clean
-	rm -rf ${NAME}
+fclean:		clean
+			@$(RM) $(NAME)
+			@echo "\033[0;32m[OK]\033[0m    \033[0;38;5;44mRemoving $(NAME)\033[0m"
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+PHONY:		all clean fclean re

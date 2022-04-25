@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 12:21:17 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/25 12:23:46 by esylva           ###   ########.fr       */
+/*   Created: 2022/04/25 16:02:29 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/25 16:02:31 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
-#include <iostream>
+#include "AMateria.hpp"
 
-class Brain
+class IMateriaSource
 {
 	public:
-		Brain(void);
-		Brain(const Brain& copy);
-		virtual ~Brain(void);
+		virtual ~IMateriaSource(void) {}
 
-		Brain&	operator=(const Brain& obj);
-
-		std::string* get_ideas(void);
-
-	protected:
-		std::string	_ideas[100];
+		virtual void		learnMateria(AMateria*) = 0;
+		virtual AMateria*	createMateria(const std::string& type) = 0;
 };
-
-std::ostream&	operator<<(std::ostream& o, const Brain& brain);
 
 #endif
