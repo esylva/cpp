@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 00:04:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/24 00:04:05 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/25 19:48:47 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ class ClapTrap
 		int					getEnergyPoints(void) const;
 		int					getAtackDamage(void) const;
 
-		virtual	void		setName(std::string);
-		void				setHitPoints(int hp) ;
-		void				setEnergyPoints(int energy) ;
-		void				setAtackDamage(int atack) ;
+		virtual	void		setName(std::string); 
+		void				setHitPoints(int hp);
+		void				setEnergyPoints(int energy);
+		void				setAtackDamage(int atack);
 
 	protected:
 		std::string		_name;

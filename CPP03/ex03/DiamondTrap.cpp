@@ -3,32 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 11:04:13 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/24 11:04:13 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/25 20:07:24 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(const std::string &name)
-    : ClapTrap(name + "_clap_name")
-	// , ScavTrap(name), FragTrap(name)
-{
-	this->setName(name);
-	// ClapTrap::name = this->name + "_clap_name";
-	this->setHitPoints(FragTrap._initHP);
-	this->setEnergyPoints(ScavTrap._initEP);
-	this->setAtackDamage(FragTrap._initAD);
+DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_name") {
 	
+	this->setName(name);
+	this->setHitPoints(FragTrap::_initHP);
+	this->_energy = ScavTrap::_initEP;
+	this->setAtackDamage(FragTrap::_initAD);
+
 	std::cout << "DiamondTrap " << _name << " came to you" << std::endl <<
 		"My HP is " << this->getHitPoints() << ", ENERGY is " << this->getEnergyPoints() << 
 	", ATTACK POWER is " << this->getAtackDamage() << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &cpy)
-	: ClapTrap(), ScavTrap(), FragTrap()
+	: ClapTrap(), FragTrap(), ScavTrap()
 {
 	_name = cpy._name;
 	ClapTrap::_name = _name + "_clap_name";
@@ -55,4 +52,14 @@ void	DiamondTrap::setName(std::string name)
 void	DiamondTrap::attack(std::string const& target)
 {
 	ScavTrap::attack(target);
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj) {
+	if (this != &obj) 	{
+		this->_name = obj._name;
+		this->_hp = obj._hp;
+		this->_energy = obj._energy;
+		this->_damage = obj._damage;
+	}
+	return (*this);
 }

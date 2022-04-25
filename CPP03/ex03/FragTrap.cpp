@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 10:45:06 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/24 10:45:06 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/25 20:01:19 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,27 @@
 	int FragTrap::_initEP = 100;
 	int FragTrap::_initAD = 30;
 
-FragTrap::FragTrap(): ClapTrap::ClapTrap() {}
+FragTrap::FragTrap(): ClapTrap::ClapTrap() {
+	this->setName("dummy");
+	this->setHitPoints(FragTrap::_initHP);
+	this->setEnergyPoints(FragTrap::_initEP);
+	this->setAtackDamage(FragTrap::_initAD);
+}
 
 FragTrap::FragTrap(const std::string &name): ClapTrap(name) {
 	
 	std::cout << "FragTrap " << this->getName() << " is preparing." << std::endl << 
 	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
-	", attack power is " << this->getAtackDamage() << std::endl;	
+	", attack power is " << this->getAtackDamage() << std::endl << std::endl;	
 	
 	this->setName(name);
-	this->setHitPoints(_initHP);
-	this->setEnergyPoints(_initEP);
-	this->setAtackDamage(_initAD);
+	this->setHitPoints(FragTrap::_initHP);
+	this->setEnergyPoints(FragTrap::_initEP);
+	this->setAtackDamage(FragTrap::_initAD);
 
 	std::cout << "FragTrap " << this->getName() << " ready to serve." << std::endl << 
 	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
-	", attack power is " << this->getAtackDamage() << std::endl;
+	", attack power is " << this->getAtackDamage() << std::endl << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &cpy) : ClapTrap(cpy) {

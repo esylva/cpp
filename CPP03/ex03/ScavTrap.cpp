@@ -3,35 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 00:04:28 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/24 00:04:28 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/25 19:54:21 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-	int ScavTrap::_initHP = 100;
-	int ScavTrap::_initEP = 50;
-	int ScavTrap::_initAD = 20;
+	// int ScavTrap::_initHP = 100;
+	// int ScavTrap::_initEP = 50;
+	// int ScavTrap::_initAD = 20;
 
-ScavTrap::ScavTrap(): ClapTrap::ClapTrap() {}
+ScavTrap::ScavTrap(): ClapTrap::ClapTrap() {
+	this->setName("dummy");
+	this->setHitPoints(ScavTrap::_initHP);
+	this->setEnergyPoints(ScavTrap::_initEP);
+	this->setAtackDamage(ScavTrap::_initAD);
+}
 
 ScavTrap::ScavTrap(const std::string &name): ClapTrap(name) {
 	
 	std::cout << "  ScavTrap " << this->getName() << " is preparing." << std::endl << 
 	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
-	", attack power is " << this->getAtackDamage() << std::endl;	
+	", attack power is " << this->getAtackDamage() << std::endl << std::endl;	
 	
 	this->setName(name);
-	this->setHitPoints(_initHP);
-	this->setEnergyPoints(_initEP);
-	this->setAtackDamage(_initAD);
+	this->setHitPoints(ScavTrap::_initHP);
+	this->setEnergyPoints(ScavTrap::_initEP);
+	this->setAtackDamage(ScavTrap::_initAD);
 
 	std::cout << "  ScavTrap " << this->getName() << " ready to serve." << std::endl << 
 	"My hp is " << this->getHitPoints() << ", energy is " << this->getEnergyPoints() << 
-	", attack power is " << this->getAtackDamage() << std::endl;
+	", attack power is " << this->getAtackDamage() << std::endl << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &cpy) : ClapTrap(cpy) {
