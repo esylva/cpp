@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 00:04:28 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/24 00:04:28 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/26 19:37:24 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-	int ScavTrap::_initHP = 100;
-	int ScavTrap::_initEP = 50;
-	int ScavTrap::_initAD = 20;
 
 ScavTrap::ScavTrap(): ClapTrap::ClapTrap() {}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 00:03:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/24 00:03:05 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/26 19:38:17 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		else {
 			std::cout << "ClapTrap " << _name << " thanks God, I'm back to " << amount << std::endl;
 			setHitPoints(this->_hp + amount);
-			setEnergyPoints(this->_energy - 1);
 		}
+		setEnergyPoints(this->_energy - 1);
 	}
 	else {
 		std::cout << "I can't healing, because I'm so damn tired" << std::endl;
