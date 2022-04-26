@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 23:17:26 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/26 12:42:38 by esylva           ###   ########.fr       */
+/*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/26 15:54:35 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
-# include <iostream>
-# include <string>
-class Bureaucrat {
+#ifndef FORM_HPP
+# define FORM_HPP
+# include "Bureaucrat.hpp"
+
+class Bureaucrat;
+
+class Form {
 
 	private:
+		Form();
 
 		const	std::string	_name;
-		int					_grade;
-
+		bool				_signed;
+		const int			_gradeToSign;
+		const int			_gradeToExecute;
+		void				_checkGrades(void);
+		
 	public:
 
-		Bureaucrat();
-		Bureaucrat(const std::string  name);
-		Bureaucrat(const std::string  name, int grade);
-		Bureaucrat(const Bureaucrat& copy);
-		~Bureaucrat();
+		Form(const std::string  name, const int gradeToSign, const int gradeToExecute);
+		Form(const Form& copy);
+		~Form();
 		
-		Bureaucrat &operator=(const Bureaucrat &obj);
+		Form &operator=(const Form &obj);
 
 		std::string	getName(void) const;
-		int  		getGrade(void) const;
-		void 		setGrade(int grade);
-		void 		incrementGrade(void);
-		void 		decrementGrade(void);
+		bool		getSignedStatus(void) const;
+		int  		getGradeToSign(void) const;
+		int  		getGradeToExecute(void) const;
+		void 		beSigned(Bureaucrat& bureaucrat);
+
 
 // "explicit" prohibits implicit type conversion 
 // saved as example
@@ -56,6 +61,8 @@ class Bureaucrat {
 			virtual const char* what(void) const throw();
 		};
 };
-	std::ostream&	operator<<(std::ostream& o, const Bureaucrat& bureaucrat);
+	std::ostream&	operator<<(std::ostream& o, const Form& Form);
 
 #endif
+
+
