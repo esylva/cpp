@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 23:17:26 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/26 12:48:22 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 09:36:07 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ void	Bureaucrat::decrementGrade(void) {
 		this->_grade = 150;
 	}
 }
+
+void	Bureaucrat::signForm(Form &form){
+	form.beSigned(*this);	
+} 
+
 
 // ohter example of exception from hpp-file
 		const char* Bureaucrat::GradeTooHighException::what(void) const throw(){

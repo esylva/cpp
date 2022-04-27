@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 11:56:23 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/26 16:33:27 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 09:38:49 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,17 @@ int main(void)
 
 	std::cout << "----------HIGHEST AND LOWEST GRADES-----------" << std::endl;
 
-	try
-	{
-		Form		form_151_1("151_1", 151, 1);
+	try {
+		Form form_151_1("151_1", 151, 1);
 	}
-	catch(const std::exception& e)
-	{
+	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
-	try
-	{
-		Form		form_150_0("150_0", 150, 0);
+	try {
+		Form form_150_0("150_0", 150, 0);
 	}
-	catch(const std::exception& e)
-	{
+	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
@@ -56,16 +52,42 @@ int main(void)
 	std::cout << b1 << std::endl;
 	std::cout << b2 << std::endl;
 
-	form_16.beSigned(b1);
-	form_149.beSigned(b1);
+	try {
+		std::cout << "Trying to sign form_149 by " << b1.getName() << std::endl;
+		form_149.beSigned(b1);
+	}
+	catch(const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	form_149.beSigned(b2);
-	form_16.beSigned(b2);
+	try {
+		std::cout << "Trying to sign form_149 by " << b2.getName() << std::endl;
+		form_149.beSigned(b2);
+		std::cout << "Success!" << std::endl;
+	}
+	catch(const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 
+	try {
+		std::cout << "Trying to sign again form_16 by " << b2.getName() << std::endl;
+		form_16.beSigned(b2);
+	}
+	catch(const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << "Incrementing "<< b2.getName() << " grade" << std::endl;
 	b2.incrementGrade();
 	std::cout << b2 << std::endl;
 
-	form_16.beSigned(b2);
+	try {
+		std::cout << b2.getName() << " trying  again to sign the form_16" << std::endl;
+		b2.signForm(form_16);
+		std::cout << "Success!" << std::endl;
+	}
+	catch(const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	std::cout << form_16 << std::endl;
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 23:17:26 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/26 12:42:38 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 09:34:25 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <string>
+# include "Form.hpp"
+
+class Form;
+
 class Bureaucrat {
 
 	private:
@@ -36,7 +40,8 @@ class Bureaucrat {
 		void 		setGrade(int grade);
 		void 		incrementGrade(void);
 		void 		decrementGrade(void);
-
+//added new function		
+		void		signForm(Form &form); 
 // "explicit" prohibits implicit type conversion 
 // saved as example
 

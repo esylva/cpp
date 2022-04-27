@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/26 15:54:35 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 08:52:25 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Form {
 		bool		getSignedStatus(void) const;
 		int  		getGradeToSign(void) const;
 		int  		getGradeToExecute(void) const;
+		
 		void 		beSigned(Bureaucrat& bureaucrat);
 
 
