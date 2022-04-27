@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 16:21:37 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 19:39:59 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ void	Form::_checkGrades(void){
 		throw Form::GradeTooHighException();
 	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
 		throw Form::GradeTooLowException();
+}
+
+const char* Form::GradeTooLowException::what(void) const throw() {
+	return ("Grade is too low!");
 }
 
 const char* Form::GradeTooHighException::what(void) const throw() {

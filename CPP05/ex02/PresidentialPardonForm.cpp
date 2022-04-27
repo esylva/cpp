@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 16:26:49 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 19:54:40 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target): 
-	Form("Presidential Pardon Form", _inGradeToSign, _inGradeToExecute),_target(target) {
-	std::cout << this->getName() << " created" << std::endl;
+	Form("Presidential Pardon Form", _inGradeToSign, _inGradeToExecute), _target(target) {
 }
-
 
 PresidentialPardonForm::~PresidentialPardonForm() {
 	std::cout << this->getName() << " destroyed" << std::endl;

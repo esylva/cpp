@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 16:25:39 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/27 19:43:17 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,7 @@ class Bureaucrat;
 
 class Form {
 
-	private:
 
-		const	std::string	_name;
-		bool				_signed;
-		const int			_gradeToSign;
-		const int			_gradeToExecute;
-		void				_checkGrades(void);
-		// const	std::string	_target;
 
 	public:
 
@@ -45,9 +38,18 @@ class Form {
 		// virtual void	execute(Bureaucrat const & executor) const;
 		// std::string	getTarget() const;
 
-		virtual std::string	getTarget() const;
-		virtual void        execute(Bureaucrat const & executor) const;
+		virtual std::string	getTarget() const = 0;
+		virtual void        execute(Bureaucrat const & executor) const = 0;
 
+	private:
+
+		const	std::string	_name;
+		bool				_signed;
+		const int			_gradeToSign;
+		const int			_gradeToExecute;
+		void				_checkGrades(void);
+		// const	std::string	_target;
+		
 	protected:
 
 		class GradeTooLowException : public std::exception
@@ -63,5 +65,3 @@ class Form {
 	std::ostream&	operator<<(std::ostream& o, const Form& Form);
 
 #endif
-
-
