@@ -1,44 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: esylva <esylva@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/09 23:11:22 by esylva            #+#    #+#              #
-#    Updated: 2022/04/23 20:19:03 by esylva           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = formforu
 
-NAME := bur
- 
-SRCS := main.cpp Bureaucrat.cpp Form.cpp
+SRC 		= main.cpp \
+			Bureaucrat.cpp \
+			Form.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
+			Intern.cpp
 
-# OBJS := ${patsubst %.cpp,%.o,${SRCS}}
-# D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
+OBJ = $(SRC:.cpp=.o)
 
-GCC := c++
+CC = clang++
+CFLAGC = -std=c++98 -Wall -Wextra -Werror -I.
 
-FLAGS := -Wall -Wextra -Werror -std=c++98 -Wshadow
+RM = rm -f
 
-all: ${NAME}
+%.o: %.cpp *.hpp
+	$(CC) $(CFLAGC) -c -o $@ $<
 
-${NAME}: 
-	${GCC} ${FLAGS} ${SRCS} -o ${NAME}
+all: $(NAME)
 
-# ${NAME} : ${OBJS}
-# 	${GCC} ${OBJS} -o ${NAME}
-
-# %.o : %.cpp
-# 	${GCC} ${FLAGS} -c $< -o $@ -MD
-
-include ${wildcard ${D_FILES}}
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
 
 clean:
-	rm -rf ${OBJS} ${D_FILES}
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -rf ${NAME}
+	$(RM) $(NAME)
 
 re: fclean all
 
