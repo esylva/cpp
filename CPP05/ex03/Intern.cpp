@@ -53,21 +53,18 @@ Form* Intern::makeForm(std::string form, std::string target)
 			Form* scf = new ShrubberyCreationForm(target);
 			std::cout << "Intern creates " << form << " for " << target << std::endl;
 			return scf;
-			break;
 		}
 		case 1:
 		{
 			Form* rrf = new RobotomyRequestForm(target);
 			std::cout << "Intern creates " << form << " for " << target << std::endl;
 			return rrf;
-			break;
 		}
 		case 2:
 		{
 			Form* ppf = new PresidentialPardonForm(target);
 			std::cout << "Intern creates " << form << " for " << target << std::endl;
 			return ppf;
-			break;
 		}
 		default:
 		{
