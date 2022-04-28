@@ -6,11 +6,12 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 09:44:20 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 10:15:23 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): 
 	Form("Shrubbery Creation Form", _inGradeToSign, _inGradeToExecute), _target(target) {
@@ -80,16 +81,18 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 ################### ### # # ### # ########################\n\
 ##########################################################\n";
 
-	const std::string fileName = this->getTarget() + "_shrubbery";
+	std::string fileName = this->getTarget() + "_shrubbery";
+	// const std::string fileName = this->getTarget() + "_shrubbery";
 
-	std::ofstream ofs(fileName);
+	std::ofstream ofs;
+	// std::ofstream ofs(fileName);
 	// std::string fileName;
 
 	// fileName = this->getTarget() + "_shrubbery";
-	// char arr[fileName.length() + 1];
+	char arr[fileName.length() + 1];
 
-	// for (unsigned long x = 0; x < sizeof(arr); x++)
-	// arr[x] = fileName[x];
+	for (unsigned long x = 0; x < sizeof(arr); x++)
+	arr[x] = fileName[x];
 	// ofs.open(arr);
 	// if (!ofs.is_open())
 	// {
@@ -97,8 +100,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	// 	return ;
 	// }
 	try {
+		ofs.open(arr);
+
 		// ofs.open(fileName);
-		ofs.open();
+		// ofs.open();
 		ofs << asci;
 		ofs.close();	
 	}
