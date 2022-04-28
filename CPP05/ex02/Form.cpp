@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 19:39:59 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 08:56:53 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	Form::_checkGrades(void){
 		throw Form::GradeTooLowException();
 }
 
+//exceptions
 const char* Form::GradeTooLowException::what(void) const throw() {
 	return ("Grade is too low!");
 }
@@ -84,6 +85,11 @@ const char* Form::GradeTooLowException::what(void) const throw() {
 const char* Form::GradeTooHighException::what(void) const throw() {
 	return ("Grade is too high!");
 }
+
+const char* Form::NotSignedFormException::what(void) const throw(){
+	return ("Form is not signed!");
+}
+
 
 std::ostream&	operator<<(std::ostream& o, const Form& form) {
 	

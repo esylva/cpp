@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 23:17:26 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 09:34:25 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 08:42:33 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ class Bureaucrat {
 		void 		incrementGrade(void);
 		void 		decrementGrade(void);
 //added new function		
-		void		signForm(Form &form); 
+		void		signForm(Form &form);
+		void 		executeForm(Form const & form);
 // "explicit" prohibits implicit type conversion 
 // saved as example
 

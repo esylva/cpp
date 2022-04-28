@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 23:17:26 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 09:50:54 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 09:00:06 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,17 @@ void	Bureaucrat::signForm(Form &form){
 	catch (std::exception &e) {
 		std::cout << getName() << " couldn’t sign the " << form.getName() << " because " << e.what() << std::endl;
 	}
-} 
+}
+
+void 	Bureaucrat::executeForm(Form const & form){
+	try {
+		form.execute(*this);	
+		std::cout << getName() << " execute the " << form.getName() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << getName() << " couldn’t execute the " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
 
 // ohter example of exception from hpp-file
 		const char* Bureaucrat::GradeTooHighException::what(void) const throw(){

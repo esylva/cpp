@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 11:56:23 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 19:54:49 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 09:27:53 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void) 
 {
@@ -22,6 +24,15 @@ int main(void)
 	Bureaucrat	b1;
 	Bureaucrat	b2("Medved", 17);
 	PresidentialPardonForm	PPF ("Vyhuhol");
+	ShrubberyCreationForm SCF ("Slon");
+	RobotomyRequestForm  RRF ("Aist");
+
+	try {
+		SCF.execute(b2);
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 	// Form		form_149("Form N149", 149, 149);
 	// Form		*form_086Y = new Form("086Y", 8, 6);
 

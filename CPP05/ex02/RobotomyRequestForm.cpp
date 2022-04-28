@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 07:55:23 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 08:22:36 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): 
-	Form("Presidential Pardon Form", _inGradeToSign, _inGradeToExecute), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target): 
+	Form("Robotomy Request Form", _inGradeToSign, _inGradeToExecute), _target(target) {
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() {
+RobotomyRequestForm::~RobotomyRequestForm() {
 	std::cout << this->getName() << " destroyed" << std::endl;
 }
 
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy):Form() {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy):Form() {
 	*this = copy;
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &obj) {
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &obj) {
  	if (this != &obj) {
 		this->_target = obj.getTarget();
 	}
 	return (*this);
 }
 
-std::string PresidentialPardonForm::getTarget() const {
+std::string RobotomyRequestForm::getTarget() const {
 	return this->_target;
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	// try
 	// {
 	// 	executor.executeForm(*this);

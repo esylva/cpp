@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/27 19:43:17 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 08:54:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ class Form {
 		};
 
 		class GradeTooHighException: public std::exception {
+
+			virtual const char* what(void) const throw();
+		};
+
+		class NotSignedFormException: public std::exception {
 
 			virtual const char* what(void) const throw();
 		};

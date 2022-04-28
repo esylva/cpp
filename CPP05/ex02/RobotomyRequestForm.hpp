@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 08:25:13 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 08:25:29 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 # include "Form.hpp"
 
-class PresidentialPardonForm: public Form
+class RobotomyRequestForm: public Form
 {
 	public:
-		PresidentialPardonForm();
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(const PresidentialPardonForm &copy);
-		virtual ~PresidentialPardonForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm &copy);
+		virtual ~RobotomyRequestForm();
 
-		PresidentialPardonForm & operator=(const PresidentialPardonForm &obj);
+		RobotomyRequestForm & operator=(const RobotomyRequestForm &obj);
 
 		virtual void			execute(Bureaucrat const & executor) const;
 		virtual	std::string		getTarget() const;
 
 	private:
 		std::string			_target;
-		static const int	_inGradeToSign		= 25;
-		static const int	_inGradeToExecute	= 5;
+		static const int	_inGradeToSign		= 72;
+		static const int	_inGradeToExecute	= 45;
 
 };
 
