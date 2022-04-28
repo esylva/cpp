@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 11:56:23 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 09:27:53 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 11:48:27 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,81 +21,41 @@ int main(void)
 
 	std::cout << "---------CREATE BUREAUCRATS AND FORMS---------" << std::endl;
 
-	Bureaucrat	b1;
+	Bureaucrat	b1("Volk", 140);
 	Bureaucrat	b2("Medved", 17);
-	PresidentialPardonForm	PPF ("Vyhuhol");
+	Bureaucrat	*b3 = new Bureaucrat("Tigr", 1);
 	ShrubberyCreationForm SCF ("Slon");
 	RobotomyRequestForm  RRF ("Aist");
-
+	PresidentialPardonForm	PPF ("Vyhuhol");
+	std::cout <<std::endl;
+	
+	std::cout << "---------ShrubberyCreationForm---------" << std::endl;
+	b1.signForm(SCF);
 	try {
-		SCF.execute(b2);
+		SCF.execute(b1);
 	}
 	catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << " Can't execute." << std::endl;
+	}	
+	SCF.execute(b2);
+	std::cout << std::endl << "---------RobotomyRequestForm---------" << std::endl;
+
+	try {
+		SCF.beSigned(b1);
 	}
-	// Form		form_149("Form N149", 149, 149);
-	// Form		*form_086Y = new Form("086Y", 8, 6);
+	catch (std::exception & e) {
+		std::cout << e.what() << " Can't sign." << std::endl;
+	}
+	b2.executeForm(RRF);
+	b2.signForm(RRF);
+	RRF.execute(b2);
+	std::cout << std::endl << "---------PresidentialPardonForm---------" << std::endl;
 
-	// std::cout << "------------------DEEP COPY-------------------" << std::endl;
+	b2.signForm(PPF);
+	b2.executeForm(PPF);
+	b3->executeForm(PPF);
 
-	// Form		*form_086Y_copy = new Form(*form_086Y);
-	// delete form_086Y;
-	// std::cout << *form_086Y_copy << std::endl;
-	// delete form_086Y_copy;
-
-	// std::cout << "----------HIGHEST AND LOWEST GRADES-----------" << std::endl;
-
-	// try {
-	// 	Form form_151_1("151_1", 151, 1);
-	// }
-	// catch(const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-
-	// try {
-	// 	Form form_150_0("150_0", 150, 0);
-	// }
-	// catch(const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-
-	// std::cout << "-------------------SIGNING--------------------" << std::endl;
-
-	// std::cout << b1 << std::endl;
-	// std::cout << b2 << std::endl;
-
-	// try {
-	// 	std::cout << "Trying to sign form_149 by " << b1.getName() << std::endl;
-	// 	form_149.beSigned(b1);
-	// }
-	// catch(const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-
-	// try {
-	// 	std::cout << "Trying to sign form_149 by " << b2.getName() << std::endl;
-	// 	form_149.beSigned(b2);
-	// 	std::cout << "Success!" << std::endl;
-	// }
-	// catch(const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-
-	// try {
-	// 	std::cout << "Trying to sign again form_16 by " << b2.getName() << std::endl;
-	// 	form_16.beSigned(b2);
-	// }
-	// catch(const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// std::cout << "Incrementing "<< b2.getName() << " grade" << std::endl;
-	// b2.incrementGrade();
-	// std::cout << b2 << std::endl;
-
-	// std::cout << b2.getName() << " trying again to sign the form_16" << std::endl;
-	// b2.signForm(form_16);
-	
-	std::cout << PPF << std::endl << std::endl;
-
+	std::cout <<std::endl;
+	delete b3;
 	return (0);
 }

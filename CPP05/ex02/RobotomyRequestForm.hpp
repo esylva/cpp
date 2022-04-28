@@ -6,13 +6,15 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 08:25:29 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 11:32:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 # include "Form.hpp"
+# include <cstdlib>
+# include <ctime>
 
 class RobotomyRequestForm: public Form
 {

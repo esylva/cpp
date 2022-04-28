@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 07:55:23 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 11:49:53 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,11 @@ std::string PresidentialPardonForm::getTarget() const {
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	// try
-	// {
-	// 	executor.executeForm(*this);
-	// 	if (executor.getGrade() > this->getExGrade())
-	// 		throw Form::GradeTooLowException();
-    //     std::cout << this->getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
-	// }
-	// catch (std::exception & e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-	std::cout << executor << std::endl;
+	if (!getSignedStatus()) {
+		throw Form::NotSignedFormException();
+	}
+	if (executor.getGrade() > this->getGradeToExecute()) {
+		throw Form::GradeTooLowException();
+	}
+	std::cout << this->getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
