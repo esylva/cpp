@@ -12,7 +12,7 @@
 
 NAME := bur
  
-SRCS := main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+SRCS := main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Intern.cpp
 
 # OBJS := ${patsubst %.cpp,%.o,${SRCS}}
 # D_FILES := ${patsubst %.cpp,%.d,${SRCS}}

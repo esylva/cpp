@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/28 08:54:42 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/28 13:26:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ class Form {
 		void		beSigned(Bureaucrat& bureaucrat);
 		bool		getSignedStatus(void) const;
 		
-		// virtual void	execute(Bureaucrat const & executor) const;
-		// std::string	getTarget() const;
-
 		virtual std::string	getTarget() const = 0;
 		virtual void        execute(Bureaucrat const & executor) const = 0;
 
