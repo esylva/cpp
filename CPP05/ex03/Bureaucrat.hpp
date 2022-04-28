@@ -1,55 +1,67 @@
-#ifndef __BUREAUCRAT_HPP__
-# define __BUREAUCRAT_HPP__
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/25 23:17:26 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/28 08:42:33 by esylva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-class Bureaucrat;
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 # include <iostream>
+# include <string>
 # include "Form.hpp"
 
-class Bureaucrat
-{
-	public:
-                Bureaucrat();
-                ~Bureaucrat();
-                Bureaucrat(Bureaucrat const &src);
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat & operator=(Bureaucrat const &src);
+class Form;
 
-		std::string	getName() const;
-		int			getGrade() const;
-		void		incGrade(int how);
-		void		decGrade(int how);
-		void		signForm(Form &src);
-		void		executeForm(Form const & form) const;
-
-		class GradeTooHighException: public std::exception
-		{
-			public:
-					explicit GradeTooHighException()
-					{}
-			
-					virtual const char* what() const throw()
-					{
-						return "\033[1;5;7;35m Too high grade! \033[0m";
-					}
-		};
-
-		class GradeTooLowException: public std::exception
-		{
-			public:
-					explicit GradeTooLowException()
-					{}
-			
-					virtual const char* what() const throw()
-					{
-						return "\033[1;5;7;34m Too low grade!  \033[0m";
-					}
-		};
+class Bureaucrat {
 
 	private:
-		std::string const	_name;
-		int			_grade;
-};
 
-std::ostream& operator<<(std::ostream &o, const Bureaucrat &src);
+		const	std::string	_name;
+		int					_grade;
+
+	public:
+
+		Bureaucrat();
+		Bureaucrat(const std::string  name);
+		Bureaucrat(const std::string  name, int grade);
+		Bureaucrat(const Bureaucrat& copy);
+		~Bureaucrat();
+		
+		Bureaucrat &operator=(const Bureaucrat &obj);
+
+		std::string	getName(void) const;
+		int  		getGrade(void) const;
+		void 		setGrade(int grade);
+		void 		incrementGrade(void);
+		void 		decrementGrade(void);
+//added new function		
+		void		signForm(Form &form);
+		void 		executeForm(Form const & form);
+// "explicit" prohibits implicit type conversion 
+// saved as example
+
+		class GradeTooLowException: public std::exception {
+			public:
+				explicit GradeTooLowException() {}
+	
+				virtual const char* what() const throw()
+				{
+					return "Grade is too low!";
+				}
+		};
+// other example
+// funcion in cpp-file
+		class GradeTooHighException: public std::exception {
+
+			virtual const char* what(void) const throw();
+		};
+};
+	std::ostream&	operator<<(std::ostream& o, const Bureaucrat& bureaucrat);
 
 #endif

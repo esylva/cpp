@@ -1,106 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/27 10:04:57 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/28 10:23:23 by esylva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm():
-_target("nemo")
-{
-    std::cout << "Please, create shrubb with string some \"target\"" << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): 
+	Form("Shrubbery Creation Form", _inGradeToSign, _inGradeToExecute), _target(target) {
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-    std::cout << "Sh destroy" << std::endl;
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+	std::cout << this->getName() << " destroyed" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
-Form("Shrubb", 145, 137),
-_target(target),
-_sign(145),
-_exec(137)
-{
-    std::cout << "Shrub on line (created)" << std::endl;
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy):Form() {
+	*this = copy;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
-{
-    *this = src;
-}
-
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)
-{
-    this->_exec = src.getExGrade();
-    this->_sign = src.getReqGrade();
-    this->_target = src.getTarget();
-    return (*this);
-}
-
-std::string ShrubberyCreationForm::getTarget() const
-{
-    return this->_target;
-}
-
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
-{
-    try
-	{
-        executor.executeForm(*this);
-		if (executor.getGrade() > this->getExGrade())
-			throw Form::GradeTooLowException();
-            std::string asci = \
-"######################################################\n\
-######################## ### ###### ### #### ####    ##\n\
-####################### # ##### #######  ##  ### #######\n\
-#####################  ##  ############ #  # ### #########\n\
-###################  ## ###  ##### #### #### ### ###  ##\n\
-################# # ### ## ## ## ###### #### ### #### #####\n\
-###############  ### # #### ## ######## #### ####    ####\n\
-##############  ### ## #### ###  #######################\n\
-#############  #### ### #### #### ### ###################\n\
-############ # ### ##### #### #### ######    ###### #########\n\
-############ ## # ## #### #### ## # ##### ### #### # ####\n\
-########### #### #### ### ### #### # #### ## #### ### ##\n\
-########### # ### #### # ##### ####  ####  ######     #####\n\
-########### ## ## #### ### # ### # ## ### ## #### ### ####\n\
-########### ### ### ### #### #### ##  ### ### ### ### ######\n\
-############ ### ## # ## ### #### # # #################\n\
-############# # #### #### ### #### ## ### ################\n\
-############## ###### #### ### ## ## ########  ###     ##\n\
-############### ## ### # ##### # ### ####### ##### ######\n\
-################# #####  #####  #### ###### ######   #####\n\
-################## #####  #### #### ## #### ###### #####\n\
-###################  ####  ### ##  ######### ##### ##########\n\
-#####################   #   #    ############  ###     ###\n\
-######################        ##### #######################\n\
-#######################      ## ####### #################\n\
-########################    ###### #######################\n\
-########################    ######### #######     ####  ##\n\
-########################    ################# ####### ## ##\n\
-########################    #################   #### #### ##\n\
-########################    ############ #### ###### #### #\n\
-########################     ################ ####### ## ###\n\
-######################         ############## ########  ##\n\
-#################### # ### ###   ########################\n\
-################### ### # # ### # #################\n\
-#############################################\n";
-
-        std::ofstream ofs;
-        std::string name_file;
-
-        name_file = this->getTarget() + "_shrubbery";
-        char arr[name_file.length() + 1];
-
-        for (unsigned long x = 0; x < sizeof(arr); x++)
-            arr[x] = name_file[x];
-        ofs.open(arr);
-        if (!ofs.is_open())
-        {
-            std::cout << "Error! File " << name_file << " was not created" << std::endl;
-            return ;
-        }
-        ofs << asci;
-        ofs.close();
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj) {
+ 	if (this != &obj) {
+		this->_target = obj.getTarget();
 	}
-	catch (std::exception & e)
-	{
+	return (*this);
+}
+
+std::string ShrubberyCreationForm::getTarget() const {
+	return this->_target;
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	if (!getSignedStatus()) {
+		throw Form::NotSignedFormException();
+	}
+	if (executor.getGrade() > this->getGradeToExecute()) {
+		throw Form::GradeTooLowException();
+	}
+	std::string asci = \
+"#######################################################\n\
+######################## ### ###### ##### ##### #### ###\n\
+####################### # ##### ######## # ####  ### ###\n\
+#####################  ##  ############ ### ### # ## ###\n\
+###################  ## ###  ##### ####     ### ## # ###\n\
+################# # ### ## ## ## ###### ### ### ###  ###\n\
+###############  ### # #### ## ######## ### ### #### ###\n\
+##############  ### ## #### ###  #######################\n\
+#############  #### ### #### #### ### ##################\n\
+############ # ### ##### #### #### #######   ##### ######\n\
+############ ## # ## #### #### ## # ##### ### #### ######\n\
+########### #### #### ### ### #### # #### ### #### ######\n\
+########### # ### #### # ##### ####  #### ### #### ######\n\
+########### ## ## #### ### # ### # ## ### ### #### ### ##\n\
+########### ### ### ### #### #### ##  ####   #####     ##\n\
+############ ### ## # ## ### #### # # ###################\n\
+############# # #### #### ### #### ## ### ###############\n\
+############## ###### #### ### ## ## ######   ### #### ###\n\
+############### ## ### # ##### # ### ####### #### ### ####\n\
+################# #####  #####  #### ####### #### ## #####\n\
+################## #####  #### #### ## ##### #### # ######\n\
+###################  ####  ### ##  ######### ####  #######\n\
+#####################   #   #    ##########   ### ########\n\
+######################        ##### ######################\n\
+#######################      ## ####### ##################\n\
+########################    ###### #######################\n\
+########################    ######### #######     ###   ###\n\
+########################    ################# ######## ####\n\
+########################    #################   ###### ####\n\
+########################    ############ #### ######## ####\n\
+########################     ################ ######## ####\n\
+######################         ##############     ###   ###\n\
+#################### # ### ###   ##########################\n\
+################### ### # # ### # #########################\n\
+###########################################################\n";
+
+	std::string fileName = this->getTarget() + "_shrubbery";
+	std::ofstream ofs;
+	
+	char arr[fileName.length() + 1];
+
+	for (unsigned long x = 0; x < sizeof(arr); x++)
+		arr[x] = fileName[x];
+	
+	try {
+		ofs.open(arr);
+		ofs << asci;
+		ofs.close();	
+	}
+	catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << executor << " exetute the " << getName() << std::endl;
 }

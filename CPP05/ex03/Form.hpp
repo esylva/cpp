@@ -1,63 +1,72 @@
-#ifndef __FORM_HPP__
-# define __FORM_HPP__
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/28 08:54:42 by esylva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-class Form;
-
-# include <iostream>
+#ifndef FORM_HPP
+# define FORM_HPP
 # include "Bureaucrat.hpp"
 
-class Form
-{
+class Bureaucrat;
+
+class Form {
+
+
+
 	public:
 
 		Form();
+		Form(const std::string  name, const int gradeToSign, const int gradeToExecute);
+		Form(const Form& copy);
 		virtual ~Form();
-		Form(std::string name, int req_grade, int ex_grade);
-		Form(const Form &src);
-		Form & operator=(const Form &src);
+		
+		Form &operator=(const Form &obj);
 
-		int				getReqGrade() const;
-		std::string		getName() const;
-		bool			getSigned() const;
-		int				getExGrade() const;
-		void			beSigned(Bureaucrat &src);
+		std::string	getName(void) const;
+		int			getGradeToSign(void) const;
+		int			getGradeToExecute(void) const;
+		void		beSigned(Bureaucrat& bureaucrat);
+		bool		getSignedStatus(void) const;
+		
+		// virtual void	execute(Bureaucrat const & executor) const;
+		// std::string	getTarget() const;
+
 		virtual std::string	getTarget() const = 0;
 		virtual void        execute(Bureaucrat const & executor) const = 0;
 
-		class GradeTooHighException: public std::exception
-		{
-			public:
-					explicit GradeTooHighException()
-					{}
-			
-					virtual const char* what() const throw()
-					{
-						return "\033[1;5;7;33m Too high req_grade!  Delete this form!\033[0m";
-					}
-		};
-
-		class GradeTooLowException: public std::exception
-		{
-			public:
-					explicit GradeTooLowException()
-					{}
-			
-					virtual const char* what() const throw()
-					{
-						return "\033[1;5;7;32m Too low req_grade!  try again!!  \033[0m";
-					}
-		};
-
 	private:
 
-		const int			_req_grade;
-		const std::string	_name;
+		const	std::string	_name;
 		bool				_signed;
-		bool				_bad_form;
-		const int			_ex_grade;
+		const int			_gradeToSign;
+		const int			_gradeToExecute;
+		void				_checkGrades(void);
+		// const	std::string	_target;
+		
+	protected:
 
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
+
+		class GradeTooHighException: public std::exception {
+
+			virtual const char* what(void) const throw();
+		};
+
+		class NotSignedFormException: public std::exception {
+
+			virtual const char* what(void) const throw();
+		};
 };
-
-std::ostream& operator<<(std::ostream &o, const Form &src);
+	std::ostream&	operator<<(std::ostream& o, const Form& Form);
 
 #endif

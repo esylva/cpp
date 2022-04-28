@@ -1,108 +1,107 @@
-#include "Form.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 13:26:16 by esylva            #+#    #+#             */
+/*   Updated: 2022/04/28 08:56:53 by esylva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-Form::Form(): _req_grade(1), _name("noname_form"), _signed(false), _ex_grade(1)
-{
-	std::cout << "noname_form with req_grade 1 added" << std::endl;
+# include "Form.hpp"
+
+Form::Form(): _name("defaultForm"), _signed(false), _gradeToSign(150), _gradeToExecute(150) {
+	std::cout << "Defaulf form created" << std::endl; 
 }
 
-Form::~Form()
-{
-	std::cout << "form to trash" << std::endl;
+Form::Form(const std::string name, const int gradeToSign, const int gradeToExecute):
+	_name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
+
+	_checkGrades();
+	
+	std::cout << "Form \"" << getName() << "\" created. Sign grade - " <<
+	getGradeToSign() << " Execute grade - " << getGradeToExecute() << std:: endl;
 }
 
-Form::Form(std::string const name, int req_grade, int ex_grade):
-_req_grade(req_grade),
-_name(name),
-_signed(false),
-_ex_grade(ex_grade)
-{
-	try
-	{
-		if (req_grade < 1 || ex_grade < 1)
-		    throw Form::GradeTooHighException();
-		else if (req_grade > 150 || ex_grade > 150)
-			throw Form::GradeTooLowException();
-		this->_bad_form = false;
+Form::Form(const Form& copy):
+	_name(copy.getName()),
+	_signed(copy.getSignedStatus()), 
+	_gradeToSign(copy.getGradeToSign()), 
+	_gradeToExecute(copy.getGradeToExecute()) {
+
+		_checkGrades();
+		// *this = src;
+		std::cerr << "The form copied" << std::endl;
+}
+
+Form::~Form() {
+	std::cout << "Form \"" << getName() << "\" destroyed" << std::endl; 
+}
+
+Form& Form::operator=(const Form &obj){
+	if (this != &obj) {
+		this->_signed = obj.getSignedStatus();
 	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-		this->_bad_form = true;
-	}
-	if (this->_bad_form)
-		std::cout << "bad form ";
-	else
-		std::cout << " form ";
-	std::cout << name << " created with req_grade = " << this->_req_grade
-		<< std::endl;
-}
-
-int	Form::getReqGrade() const
-{
-	return (this->_req_grade);
-}
-
-int	Form::getExGrade() const
-{
-	return (this->_ex_grade);
-}
-
-std::string	Form::getName() const
-{
-	return (this->_name);
-}
-
-bool Form::getSigned() const
-{
-	return (this->_signed);
-}
-
-std::ostream & operator<<(std::ostream &o, Form const &src)
-{
-	o << "\033[1;35m" << src.getName() << "\033[0m"
-	<< " Form with req_grade = " << src.getReqGrade()
-	<< ". is_signed = " << src.getSigned();
-	return o;
-}
-
-Form::Form(Form const &src):
-_req_grade(src.getReqGrade()),
-_name(src.getName()),
-_signed(src.getSigned()),
-_ex_grade(src.getExGrade())
-{
-	*this = src;
-}
-
-Form &Form::operator=(const Form &src)
-{
-	int &ii = const_cast<int &>(this->_req_grade);
-	ii = src.getReqGrade();
-	const int &iii = const_cast<const int&>(ii);
-	(void)iii;
-	std::string &nn = const_cast<std::string&>(this->_name);
-	nn = src.getName();
-	const std::string& nnn = const_cast<const std::string&>(nn);
-	(void)nnn;
-	this->_signed = src.getSigned();
-	int &ee = const_cast<int &>(this->_ex_grade);
-	ii = src.getExGrade();
-	const int &eee = const_cast<const int&>(ee);
-	(void)eee;
 	return (*this);
 }
 
-void		Form::beSigned(Bureaucrat &src)
-{
-	try
-	{
-		if (src.getGrade() > this->getReqGrade())
-			throw Form::GradeTooLowException();
-		this->_signed = true;
+std::string	Form::getName(void) const{
+	return (this->_name);
+}
+
+bool		Form::getSignedStatus(void) const{
+	return (this->_signed);
+}
+
+int  		Form::getGradeToSign(void) const {
+	return (this->_gradeToSign);
+}
+
+int  		Form::getGradeToExecute(void) const {
+	return (this->_gradeToExecute);
+}
+void 		Form::beSigned(Bureaucrat& bureaucrat) {
+	if (bureaucrat.getGrade() > this->getGradeToSign()) {
+		
+		throw Form::GradeTooLowException();
 	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	src.signForm(*this);
+	_signed = true;
+}
+
+void	Form::_checkGrades(void){
+	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1)
+		throw Form::GradeTooHighException();
+	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
+		throw Form::GradeTooLowException();
+}
+
+//exceptions
+const char* Form::GradeTooLowException::what(void) const throw() {
+	return ("Grade is too low!");
+}
+
+const char* Form::GradeTooHighException::what(void) const throw() {
+	return ("Grade is too high!");
+}
+
+const char* Form::NotSignedFormException::what(void) const throw(){
+	return ("Form is not signed!");
+}
+
+
+std::ostream&	operator<<(std::ostream& o, const Form& form) {
+	
+	std::string	isSigned;
+
+	if (form.getSignedStatus() == false)
+		isSigned = "\" is not signed";
+	else
+		isSigned = "\" is signed";
+		
+	o << "Form \"" << form.getName() << isSigned << 
+	", the grade required to sign is " << form.getGradeToSign() << 
+	", the grade required to execute is " << form.getGradeToExecute();
+	return o;
 }
