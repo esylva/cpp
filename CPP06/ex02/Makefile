@@ -11,8 +11,10 @@
 # **************************************************************************** #
 
 NAME := bur
- 
-SRCS := main.cpp Base.cpp ClassA.cpp
+
+SRCS := main.cpp
+
+# SRCS := main.cpp Base.cpp
 # OBJS := ${patsubst %.cpp,%.o,${SRCS}}
 # D_FILES := ${patsubst %.cpp,%.d,${SRCS}}
 
@@ -32,7 +34,7 @@ ${NAME}:
 # %.o : %.cpp
 # 	${GCC} ${FLAGS} -c $< -o $@ -MD
 
-include ${wildcard ${D_FILES}}
+# include ${wildcard ${D_FILES}}
 
 clean:
 	rm -rf ${OBJS} ${D_FILES}
