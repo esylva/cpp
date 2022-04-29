@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:38:11 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/29 15:53:43 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/29 17:41:16 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,21 @@ class ClassC: public Base {
 void identify(Base* p){
     ClassA *cA = dynamic_cast <ClassA *>(p);
     if (cA != NULL) {
-        std::cout << "It's an A Class" << std::endl;
+        std::cout << "Identify by pointer \"It's an A Class\"" << std::endl;
         return;
     }
     ClassB *cB = dynamic_cast <ClassB *>(p);
     if (cB != NULL) {
-        std::cout << "It's a B Class" << std::endl;
+        std::cout << "Identify by pointer \"It's a B Class\"" << std::endl;
         return;
     }
     ClassC *cC = dynamic_cast <ClassC *>(p);
     if (cC != NULL) {
-        std::cout << "It's a C Class" << std::endl;
+        std::cout << "Identify by pointer \"It's a C Class\"" << std::endl;
         return;
     }
     else{
-        std::cout << "Class undefined" << std::endl;
+        std::cout << "Identify by pointer \"Class undefined\"" << std::endl;
     }
 }
 
@@ -79,27 +79,26 @@ void identify(Base* p){
 void identify(Base& p) {
     try {
         ClassA cA = dynamic_cast <ClassA &>(p);
-        std::cout << "It's an A Class" << std::endl;
+        std::cout << "Identify by reference \"It's an A Class\"" << std::endl;
     }
     catch (std::bad_cast &bc){}
     try {
         ClassB cB = dynamic_cast <ClassB &>(p);
-        std::cout << "It's a B Class" << std::endl;
+        std::cout << "Identify by reference \"It's a B Class\"" << std::endl;
     }
     catch (std::bad_cast &bc){}
     try {
         ClassC cC = dynamic_cast <ClassC &>(p);
-        std::cout << "It's a C Class" << std::endl;
+        std::cout << "Identify by reference \"It's a C Class\"" << std::endl;
     }
     catch (std::bad_cast &bc){
-        std::cout << "Class undefined" << std::endl;
+        std::cout << "Identify by reference \"Class undefined\"" << std::endl;
     }
 }
 
 Base*	generate(void){
 
-	std::srand(std::time(NULL));
-	int chance = std::rand();
+	int chance = rand();
     std::cout << "Randomly created ";
 	// std::cout << chance << std::endl;
     switch (chance % 3) 
@@ -124,6 +123,7 @@ int main(){
 
     Base    *x;
 
+	srand(time(NULL));
     for (int i = 0; i < 6; i++){
 	x = generate();
     // usleep(100);
