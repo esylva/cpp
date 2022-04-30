@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 10:01:49 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/30 10:01:49 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/30 13:19:36 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,54 @@
 #define ARRAY_HPP
 #include <iostream>
 
-template<typename Type>
+template<typename T>
 class Array
 {
 	private:
-		Type *t;
-		unsigned int count;
-		class NoAllocateException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw() {return ("Segfault");}
-		};
+		T*				_t;
+		unsigned int	_countOfElements;
+
+		// class NoAllocateException : public std::exception
+		// {
+		// 	public:
+		// 		virtual const char* what() const throw() {return ("Segfault");}
+		// };
 	public:
-		Array() { t = 0; count = 0;}
-		Array(unsigned int count)
-		{
-			unsigned int i;
+		Array(): _t(NULL), _countOfElements(0){}
 
-			i = 0;
-			t = new Type[count];
-			this->count = count;
-			while(i < count)
-			{
-				this->t[i] = 5;
-				i++;
+		Array(unsigned int countOfElements): _countOfElements(countOfElements) {
+						
+			_t = new T[_countOfElements];
+			for (unsigned int i = 0; i < _countOfElements; i++) {
+				this->_t[i] = 0;
 			}
 		}
-		Array(Array const &array)
-		{
-			unsigned int i;
 
-			i = 0;
-			t = new Type[array.count];
-			count = array.count;
-			while (i < count)
-			{
-				t[i] = array.t[i];
-				i++;
+		Array(Array const &copy) {
+			
+			_t = new T[copy.size()];
+			this->_countOfElements = copy.size();
+			for(unsigned int i = 0; i < _countOfElements; i++) {
+				this->_t[i] = copy._t[i];
 			}
 		}
-		Type &operator[](unsigned int elem)
-		{
-			if (elem >= 0 && elem < count)
-			{
-				return (t[elem]);
+
+		~Array() {
+			delete[] _t;
+		}
+
+		T &operator[](unsigned int elem) {
+			if (elem >= 0 && elem < _countOfElements) {
+				return (_t[elem]);
 			}
-			throw NoAllocateException();
-			return (t[0]);
+			// throw NoAllocateException();
+			throw std::exception();
+			return _t[0];
 		}
-		~Array() 
-		{
-			delete[]t;
-		}
-		int size()
-		{
-			return (count);
+		
+		int size() const {
+			return (_countOfElements);
 		}
 };
-
 
 #endif

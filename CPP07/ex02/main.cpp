@@ -6,12 +6,12 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:38:11 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/29 21:05:25 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/30 13:04:23 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
