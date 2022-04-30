@@ -15,12 +15,6 @@
 #include <cstdlib>
 #include <exception>
 #include <typeinfo>
-// #include <unistd.h>
-
-// class Base;
-// class ClassA;
-// class ClassB;
-// class ClassC;
 
 class Base {
 	public:
@@ -100,7 +94,6 @@ Base*	generate(void){
 
 	int chance = rand();
     std::cout << "Randomly created ";
-	// std::cout << chance << std::endl;
     switch (chance % 3) 
     {
         case 0:{
@@ -126,7 +119,6 @@ int main(){
 	srand(time(NULL));
     for (int i = 0; i < 6; i++){
 	x = generate();
-    // usleep(100);
     identify(x);
     identify(*x);
     delete x;
