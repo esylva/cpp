@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:38:11 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/29 17:41:16 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/30 13:50:52 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,19 @@ void identify(Base& p) {
     try {
         ClassA cA = dynamic_cast <ClassA &>(p);
         std::cout << "Identify by reference \"It's an A Class\"" << std::endl;
+        return;
     }
     catch (std::bad_cast &bc){}
     try {
         ClassB cB = dynamic_cast <ClassB &>(p);
         std::cout << "Identify by reference \"It's a B Class\"" << std::endl;
+        return;
     }
     catch (std::bad_cast &bc){}
     try {
         ClassC cC = dynamic_cast <ClassC &>(p);
         std::cout << "Identify by reference \"It's a C Class\"" << std::endl;
+        return;
     }
     catch (std::bad_cast &bc){
         std::cout << "Identify by reference \"Class undefined\"" << std::endl;
