@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:38:11 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/30 18:51:18 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/30 18:58:13 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int main() {
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
-	//[...]
 	mstack.push(0);
 
 	MutantStack<int>::const_iterator it = mstack.begin();
