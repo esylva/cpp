@@ -26,6 +26,7 @@ all: ${NAME}
 
 ${NAME}: 
 	${GCC} ${FLAGS} ${SRCS} -o ${NAME}
+	./bur
 
 # ${NAME} : ${OBJS}
 # 	${GCC} ${OBJS} -o ${NAME}
