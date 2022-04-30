@@ -12,7 +12,7 @@
 
 NAME := bur
 
-SRCS := main.cpp
+SRCS := main.cpp Span.cpp
 
 # SRCS := main.cpp Base.cpp
 # OBJS := ${patsubst %.cpp,%.o,${SRCS}}
