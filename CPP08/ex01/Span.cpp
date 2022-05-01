@@ -21,7 +21,7 @@ Span::Span(const Span &copy) : vec(copy.vec), size(copy.size) {}
 Span::~Span() {}
 
 Span &Span::operator=(const Span &obj) {
-	this->vec.clear();
+	// this->vec.clear();
 	this->vec = obj.vec;
 	this->size = obj.size;
 	return *this;
